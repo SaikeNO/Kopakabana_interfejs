@@ -15,15 +15,15 @@ using System.Windows.Shapes;
 namespace Kopakabana
 {
     /// <summary>
-    /// Logika interakcji dla klasy OpcjeRozgrywek.xaml
+    /// Logika interakcji dla klasy OpcjeTabela.xaml
     /// </summary>
-    public partial class OpcjeRozgrywek : Window
+    public partial class OpcjeTabela : Window
     {
-        public OpcjeRozgrywek()
+        public OpcjeTabela()
         {
             InitializeComponent();
         }
 
-        
+
     }
 }

@@ -22,19 +22,11 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeSedziow : Window
     {
-        public void ZapisDoPliku()
-        {
-            stream = File.Open("Sedziowie.bin", FileMode.Create);
-            formatter = new BinaryFormatter();
-            formatter.Serialize(stream, kantorek);
-            stream.Close();
-        }
         private Kantorek kantorek;
         private Stream stream;
         private BinaryFormatter formatter;
         public OpcjeSedziow()
         {
-            
             InitializeComponent();
             if (File.Exists("Sedziowie.bin"))
             {
@@ -52,7 +44,6 @@ namespace Kopakabana
             {
                 listaSedziow.Items.Add(sedzia);
             }
-            listaSedziow.Items.Refresh();
         }
 
         private void DodajSedziego_Click(object sender, RoutedEventArgs e)
@@ -61,12 +52,7 @@ namespace Kopakabana
             
             if(true == oknosedzia.ShowDialog())
             {
-                string imie, nazwisko;
-                imie = oknosedzia.TextBoxImie.Text;
-                
-                nazwisko = oknosedzia.TextBoxNazwisko.Text;
-                Sport sportSedzia = new Sport();
-                
+                Sport sportSedzia = new Siatkowka();
                 
                 if((oknosedzia.RadioButtonSiatkowka.IsChecked)== true)
                 {
@@ -80,40 +66,20 @@ namespace Kopakabana
                 {
                     sportSedzia = new DwaOgnie();
                 }
-                
-                kantorek.DodajSedziego(new Sedzia( imie, nazwisko ,sportSedzia));
-                stream = File.Open("Sedziowie.bin", FileMode.Create);
-                formatter = new BinaryFormatter();
-                formatter.Serialize(stream, kantorek);
-                listaSedziow.Items.Clear();
-                foreach (Sedzia sedzia in kantorek.GetSedziowie())
-                {
-                    listaSedziow.Items.Add(sedzia);
-                }
-                listaSedziow.Items.Refresh();
-                stream.Close(); 
+
+                Sedzia sedzia = new(oknosedzia.TextBoxImie.Text, oknosedzia.TextBoxNazwisko.Text, sportSedzia);
+                kantorek.DodajSedziego(sedzia);
+                listaSedziow.Items.Add(sedzia);
+
+                ZapisDoPliku();
             }
-            
         }
-        private void ListaSedziw_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void UsunSedziego_Click(object sender, RoutedEventArgs e)
         {
             kantorek.UsunSedziego(listaSedziow.SelectedIndex);
             listaSedziow.Items.RemoveAt(listaSedziow.SelectedIndex);
             
             ZapisDoPliku();
-            listaSedziow.Items.Clear();
-            foreach (Sedzia sedzia in kantorek.GetSedziowie())
-            {
-                listaSedziow.Items.Add(sedzia);
-            }
-            listaSedziow.Items.Refresh();
-            stream.Close();
-
         }
 
         private void EdytujSedziego_Click(object sender, RoutedEventArgs e)
@@ -123,6 +89,12 @@ namespace Kopakabana
             {
 
             }
+        }
+        public void ZapisDoPliku()
+        {
+            stream = File.Open("Sedziowie.bin", FileMode.Create);
+            formatter.Serialize(stream, kantorek);
+            stream.Close();
         }
     }
 }

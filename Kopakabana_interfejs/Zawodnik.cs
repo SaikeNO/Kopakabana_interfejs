@@ -5,7 +5,7 @@ namespace Kopakabana
     [Serializable()]
     class Zawodnik : Osoba
 	{
-		private int NumerKoszulki { get; }
+		public int NumerKoszulki { get; set; }
 
 		public Zawodnik(string name, string surname, int numerKoszulki) : base(name, surname)
 		{

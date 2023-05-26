@@ -4,8 +4,13 @@ namespace Kopakabana
     {
         private Druzyna druzyna1, druzyna2;
         public Druzyna? WygranaDruzyna { get; set; }
-        private Sedzia? Sedzia { get; set; }
+        public Sedzia? Sedzia { get; set; }
         
+        public Rozgrywka(Druzyna druzyna1, Druzyna druzyna2)
+        {
+            this.druzyna1 = druzyna1;
+            this.druzyna2 = druzyna2;
+        }
         public Rozgrywka(Druzyna druzyna1, Druzyna druzyna2, Sedzia sedzia)
         {
             this.druzyna1 = druzyna1;
@@ -42,7 +47,14 @@ namespace Kopakabana
         }
         public override string ToString()
         {
-            return $"Rozgrywka: {druzyna1} vs {druzyna2}\nSedzia: {Sedzia}";
+            if(Sedzia == null)
+            {
+                return $"Rozgrywka: {druzyna1} vs {druzyna2}";
+            } 
+            else
+            {
+                return $"Rozgrywka: {druzyna1} vs {druzyna2}\nSedzia: {Sedzia}";
+            }
         }
         public static string WyswietlDruzyny(Druzyna druzyna1, Druzyna druzyna2)
         {

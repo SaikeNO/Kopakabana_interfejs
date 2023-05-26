@@ -23,11 +23,12 @@ namespace Kopakabana
     public partial class OpcjeZawodnikow : Window
     {
         private List<Zawodnik> listaZawodnikow;
+        private Stream stream;
+        private BinaryFormatter formatter;
         public OpcjeZawodnikow()
         {
             InitializeComponent();
-            Stream stream;
-            BinaryFormatter formatter;
+
             if (File.Exists("Zawodnicy.bin"))
             {
                 stream = File.Open("Zawodnicy.bin", FileMode.Open);
@@ -44,49 +45,54 @@ namespace Kopakabana
             {
                 Zawodnicy.Items.Add(zawodnik);
             }
-            Zawodnicy.Items.Refresh();
         }
 
-        private void DodajZawodnikow1_Click(object sender, RoutedEventArgs e)
+        private void DodajZawodnika_Click(object sender, RoutedEventArgs e)
         {
-            DodajZawodnika dodajZawodnika = new DodajZawodnika();
-            if(true == dodajZawodnika.ShowDialog())
+            DodajZawodnika dodajZawodnika = new();
+            if (true == dodajZawodnika.ShowDialog())
             {
-                Stream stream;
-                BinaryFormatter formatter;
-                if (File.Exists("Zawodnicy.bin"))
-                {
-                    stream = File.Open("Zawodnicy.bin", FileMode.Open);
-                    formatter = new BinaryFormatter();
-                    listaZawodnikow = (List<Zawodnik>)formatter.Deserialize(stream);
-                    stream.Close();
-                }
-                else
-                {
-                    listaZawodnikow = new List<Zawodnik>();
-                }
-                string imie, nazwisko;
-                imie = dodajZawodnika.ImieZawodnika.Text;
-                nazwisko = dodajZawodnika.NazwiskoZawodnika.Text;
                 int numerKoszulki = int.Parse(dodajZawodnika.NumerKoszulkiText.Text);
-                listaZawodnikow.Add(new Zawodnik(imie, nazwisko, numerKoszulki));
-                stream = File.Open("Zawodnicy.bin", FileMode.Create);
-                formatter = new BinaryFormatter();
-                formatter.Serialize(stream, listaZawodnikow);
-                Zawodnicy.Items.Clear();
-                foreach (Zawodnik zawodnik in listaZawodnikow)
-            {
-                Zawodnicy.Items.Add(zawodnik);
-            }
-            Zawodnicy.Items.Refresh();
-                stream.Close();
-            }
 
+                Zawodnik zawodnik = new(dodajZawodnika.ImieZawodnika.Text, dodajZawodnika.NazwiskoZawodnika.Text, numerKoszulki);
+                listaZawodnikow.Add(zawodnik);
+                Zawodnicy.Items.Add(zawodnik);
+
+                ZapisDoPliku();
+            }
         }
 
         private void UsunZawodnika_Click(object sender, RoutedEventArgs e)
         {
+            listaZawodnikow.RemoveAt(Zawodnicy.SelectedIndex);
             Zawodnicy.Items.RemoveAt(Zawodnicy.SelectedIndex);
+
+            ZapisDoPliku();
+        }
+        private void EdytujZawodnika_Click(object sender, RoutedEventArgs e)
+        {
+            DodajZawodnika dodajZawodnika = new();
+            Zawodnik zawodnik = listaZawodnikow[Zawodnicy.SelectedIndex];
+
+            dodajZawodnika.ImieZawodnika.Text = zawodnik.Name;
+            dodajZawodnika.NazwiskoZawodnika.Text = zawodnik.Surname;
+            dodajZawodnika.NumerKoszulkiText.Text = zawodnik.NumerKoszulki + ""; // + "" jest po to aby przekonwertować int'a na string'a
+
+            if (true == (dodajZawodnika.ShowDialog()))
+            {
+                zawodnik.Name = dodajZawodnika.ImieZawodnika.Text;
+                zawodnik.Surname = dodajZawodnika.NazwiskoZawodnika.Text;
+                zawodnik.NumerKoszulki = int.Parse(dodajZawodnika.NumerKoszulkiText.Text);
+
+                ZapisDoPliku();
+                Zawodnicy.Items.Refresh();
+            }
+        }
+        public void ZapisDoPliku()
+        {
+            stream = File.Open("Zawodnicy.bin", FileMode.Create);
+            formatter.Serialize(stream, listaZawodnikow);
+            stream.Close();
         }
     }
 }

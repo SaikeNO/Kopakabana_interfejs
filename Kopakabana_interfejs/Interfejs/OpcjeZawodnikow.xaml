@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="OpcjeZawodnikow" Height="368" Width="710">
     <Grid>
-        <Button x:Name="DodajZawodnikow1" Content="Dodaj" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" FontSize="22" Width="83" Click="DodajZawodnikow1_Click"/>
+        <Button x:Name="DodajZawodnika" Content="Dodaj" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" FontSize="22" Width="83" Click="DodajZawodnika_Click"/>
         <Button x:Name="UsunZawodnika" Content="Usun" HorizontalAlignment="Left" Margin="37,80,0,0" VerticalAlignment="Top" FontSize="22" Width="83" Click="UsunZawodnika_Click"/>
-        <Button x:Name="EdytujZawodnika" Content="Edytuj" HorizontalAlignment="Left" Margin="37,118,0,0" VerticalAlignment="Top" FontSize="22" Width="83"/>
+        <Button x:Name="EdytujZawodnika" Content="Edytuj" HorizontalAlignment="Left" Margin="37,118,0,0" VerticalAlignment="Top" FontSize="22" Width="83" Click="EdytujZawodnika_Click"/>
         <ListBox x:Name="Zawodnicy" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="151,42,66,65"/>
 
     </Grid>

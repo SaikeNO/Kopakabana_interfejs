@@ -41,10 +41,10 @@ namespace Kopakabana
             opcjeDruzyn.ShowDialog();
         }
 
-        private void ButtonRozrywka_Click_2(object sender, RoutedEventArgs e)
+        private void ButtonKwalifikacje_Click(object sender, RoutedEventArgs e)
         {
-            OpcjeRozgrywek opcjeRozgrywk = new OpcjeRozgrywek();
-            opcjeRozgrywk.ShowDialog();
+            OpcjeKwalifikacje opcjeKwalifikacje = new();
+            opcjeKwalifikacje.ShowDialog();
         }
     }
 }
