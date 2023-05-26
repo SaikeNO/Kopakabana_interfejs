@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +24,7 @@ namespace Kopakabana
         public DodajSedziego()
         {
             InitializeComponent();
+
         }
 
         private void TextBoxImie_TextChanged(object sender, TextChangedEventArgs e)
@@ -36,7 +39,7 @@ namespace Kopakabana
 
         private void OnOK_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
