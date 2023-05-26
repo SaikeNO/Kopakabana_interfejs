@@ -19,8 +19,6 @@ namespace Kopakabana
             
         }
 
-        
-
         public void DodajSedziego(Sedzia sedzia)
         {
             listaSedziow.Add(sedzia);
