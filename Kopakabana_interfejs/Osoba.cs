@@ -5,8 +5,8 @@ namespace Kopakabana
     [Serializable()]
     class Osoba
     {
-        protected string Name { get; }
-        protected string Surname { get; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
         public Osoba(string name, string surname)
         {
