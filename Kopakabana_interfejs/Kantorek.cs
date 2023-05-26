@@ -13,11 +13,13 @@ namespace Kopakabana
         {
             listaSedziow.AddRange(lista);
         }
-        public Sedzia UsunSedziego(Sedzia sedzia)
+        public void UsunSedziego(int index)
         {
-            listaSedziow.Remove(sedzia);
-            return sedzia;
+            listaSedziow.RemoveAt(index);
+            
         }
+
+        
 
         public void DodajSedziego(Sedzia sedzia)
         {

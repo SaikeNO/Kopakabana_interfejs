@@ -13,10 +13,10 @@
         <TextBox x:Name="TextBoxImie" HorizontalAlignment="Left" Margin="186,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566" TextChanged="TextBoxImie_TextChanged"/>
         <TextBox x:Name="TextBoxNazwisko" HorizontalAlignment="Left" Margin="186,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566"/>
         <Button x:Name="OnOK" Content="OK" HorizontalAlignment="Left" Margin="518,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96" Click="OnOK_Click"/>
-        <Button x:Name="OnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="656,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
-        <RadioButton IsChecked="True" GroupName="sport" Content="Siatkówka" HorizontalAlignment="Left" Margin="186,123,0,0" VerticalAlignment="Top"/>
-        <RadioButton GroupName="sport" Content="Przeciąganie Liny"  HorizontalAlignment="Left" Margin="186,143,0,0" VerticalAlignment="Top"/>
-        <RadioButton GroupName="sport" Content="Dwa Ognie"  HorizontalAlignment="Left" Margin="186,163,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="OnAnuluj" IsCancel="True" Content="Anuluj" HorizontalAlignment="Left" Margin="656,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
+        <RadioButton Name="RadioButtonSiatkowka" IsChecked="True" GroupName="sport" Content="Siatkówka" HorizontalAlignment="Left" Margin="186,123,0,0" VerticalAlignment="Top" />
+        <RadioButton Name="RadioButtonPrzeciaganieLiny" GroupName="sport" Content="PrzeciąganieLiny"  HorizontalAlignment="Left" Margin="186,143,0,0" VerticalAlignment="Top" />
+        <RadioButton Name="RadioButtonDwaOgnie" GroupName="sport" Content="DwaOgnie"  HorizontalAlignment="Left" Margin="186,163,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </Window>
