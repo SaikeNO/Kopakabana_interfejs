@@ -8,8 +8,8 @@
         Title="OpcjeSedziow" Height="346" Width="696">
     <Grid HorizontalAlignment="Left" Width="696">
         <Button x:Name="DodajSedziego" Content="Dodaj" HorizontalAlignment="Left" Margin="25,51,0,0" VerticalAlignment="Top" FontSize="22" Width="75" Click="DodajSedziego_Click"/>
-        <Button x:Name="UsunSedziego" Content="Usun" HorizontalAlignment="Left" Margin="25,89,0,0" VerticalAlignment="Top" FontSize="22" Width="75"/>
-        <Button x:Name="EdytujSedziego" Content="Edytuj" HorizontalAlignment="Left" Margin="25,127,0,0" VerticalAlignment="Top" FontSize="22" Width="75"/>
+        <Button x:Name="UsunSedziego" Content="Usun" HorizontalAlignment="Left" Margin="25,89,0,0" VerticalAlignment="Top" FontSize="22" Width="75" Click="UsunSedziego_Click"/>
+        <Button x:Name="EdytujSedziego" Content="Edytuj" HorizontalAlignment="Left" Margin="25,127,0,0" VerticalAlignment="Top" FontSize="22" Width="75" Click="EdytujSedziego_Click"/>
         <ListBox x:Name="listaSedziow"  Width="500" Margin="136,51,60,60" SelectionChanged="ListaSedziw_SelectionChanged"/>
     </Grid>
 </Window>
