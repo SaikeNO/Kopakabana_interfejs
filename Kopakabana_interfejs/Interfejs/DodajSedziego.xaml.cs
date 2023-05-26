@@ -43,5 +43,10 @@ namespace Kopakabana
         {
 
         }
+
+        private void ComboBoxDyscyplina_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

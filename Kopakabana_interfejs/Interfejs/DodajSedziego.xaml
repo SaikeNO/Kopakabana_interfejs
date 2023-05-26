@@ -14,7 +14,9 @@
         <TextBox x:Name="TextBoxNazwisko" HorizontalAlignment="Left" Margin="186,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566"/>
         <Button x:Name="OnOK" Content="OK" HorizontalAlignment="Left" Margin="518,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96" Click="OnOK_Click"/>
         <Button x:Name="OnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="656,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
-        <ComboBox x:Name="ComboBoxDyscyplina" HorizontalAlignment="Left" Margin="186,119,0,0" VerticalAlignment="Top" Width="566" Text="Dyscyplina" FontSize="22"/>
+        <RadioButton IsChecked="True" GroupName="sport" Content="Siatkówka" HorizontalAlignment="Left" Margin="186,123,0,0" VerticalAlignment="Top"/>
+        <RadioButton GroupName="sport" Content="Przeciąganie Liny"  HorizontalAlignment="Left" Margin="186,143,0,0" VerticalAlignment="Top"/>
+        <RadioButton GroupName="sport" Content="Dwa Ognie"  HorizontalAlignment="Left" Margin="186,163,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
