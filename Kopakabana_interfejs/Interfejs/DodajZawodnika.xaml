@@ -14,6 +14,6 @@
         <TextBox x:Name="NazwiskoZawodnika" HorizontalAlignment="Left" Margin="172,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" FontSize="22"/>
         <TextBox x:Name="NumerKoszulkiText" HorizontalAlignment="Left" Margin="172,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" FontSize="22"/>
         <Button x:Name="OnOK" Content="OK" HorizontalAlignment="Left" Margin="444,168,0,0" VerticalAlignment="Top" FontSize="22" Width="96" Click="OnOK_Click"/>
-        <Button x:Name="OnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="574,168,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
+        <Button x:Name="OnAnuluj" IsCancel="True" Content="Anuluj" HorizontalAlignment="Left" Margin="574,168,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
     </Grid>
 </Window>
