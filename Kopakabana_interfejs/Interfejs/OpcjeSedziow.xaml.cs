@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,13 +23,68 @@ namespace Kopakabana
     {
         public OpcjeSedziow()
         {
+            
             InitializeComponent();
+            Stream stream;
+            BinaryFormatter formatter;
+            Kantorek kantorek;
+            if (File.Exists("Sedziowie.bin"))
+            {
+                stream = File.Open("Sedziowie.bin", FileMode.Open);
+                formatter = new BinaryFormatter();
+                kantorek = (Kantorek)formatter.Deserialize(stream);
+                stream.Close();
+            }
+            else
+            {
+                kantorek = new Kantorek();
+            }
+
+            foreach (Sedzia sedzia in kantorek.GetSedziowie())
+            {
+                listaSedziow.Items.Add(sedzia);
+            }
+            listaSedziow.Items.Refresh();
         }
 
         private void DodajSedziego_Click(object sender, RoutedEventArgs e)
         {
             DodajSedziego oknosedzia = new DodajSedziego();
-            oknosedzia.ShowDialog();
+            
+            if(true == oknosedzia.ShowDialog())
+            {
+                
+                Stream stream;
+                BinaryFormatter formatter;
+                Kantorek kantorek;
+                if (File.Exists("Sedziowie.bin"))
+                {
+                    stream = File.Open("Sedziowie.bin", FileMode.Open);
+                    formatter = new BinaryFormatter();
+                    kantorek = (Kantorek)formatter.Deserialize(stream);
+                    stream.Close();
+                }
+                else
+                {
+                    kantorek = new Kantorek();
+                }
+                string imie, nazwisko;
+                imie = oknosedzia.TextBoxImie.Text;
+                nazwisko = oknosedzia.TextBoxNazwisko.Text;
+                kantorek.DodajSedziego(new Sedzia( imie, nazwisko ,new Siatkowka() ));
+                stream = File.Open("Sedziowie.bin", FileMode.Create);
+                formatter = new BinaryFormatter();
+                formatter.Serialize(stream, kantorek);
+                listaSedziow.Items.Clear();
+                foreach (Sedzia sedzia in kantorek.GetSedziowie())
+                {
+                    listaSedziow.Items.Add(sedzia);
+                }
+                listaSedziow.Items.Refresh();
+                stream.Close();
+
+                
+            }
             
         }
 
