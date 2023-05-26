@@ -118,7 +118,11 @@ namespace Kopakabana
 
         private void EdytujSedziego_Click(object sender, RoutedEventArgs e)
         {
+            DodajSedziego edycjaSedziego = new DodajSedziego();
+            if(true == (edycjaSedziego.ShowDialog()))
+            {
 
+            }
         }
     }
 }
