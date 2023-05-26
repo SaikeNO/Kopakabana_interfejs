@@ -1,0 +1,19 @@
+﻿<Window x:Class="Kopakabana.DodajZawodnika"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kopakabana"
+        mc:Ignorable="d"
+        Title="DodajZawodnika" Height="251" Width="706">
+    <Grid>
+        <Label x:Name="Imie" Content="Imie:" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label x:Name="Nazwisko" Content="Nazwisko:" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label x:Name="NumerKoszulki" Content="Nr Koszulki:" HorizontalAlignment="Left" Margin="32,105,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <TextBox x:Name="ImieZawodnika" HorizontalAlignment="Left" Margin="172,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" FontSize="22"/>
+        <TextBox x:Name="NazwiskoZawodnika" HorizontalAlignment="Left" Margin="172,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" FontSize="22"/>
+        <TextBox x:Name="NumerKoszulkiText" HorizontalAlignment="Left" Margin="172,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="498" FontSize="22"/>
+        <Button x:Name="OnOK" Content="OK" HorizontalAlignment="Left" Margin="444,168,0,0" VerticalAlignment="Top" FontSize="22" Width="96" Click="OnOK_Click"/>
+        <Button x:Name="OnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="574,168,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>
+    </Grid>
+</Window>
