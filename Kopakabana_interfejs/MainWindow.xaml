@@ -1,0 +1,16 @@
+﻿<Window x:Class="Kopakabana.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kopakabana"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="ButtonRozgrywka" HorizontalAlignment="Left" Margin="550,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.661,-0.257" FontSize="20" Height="50" Width="182" Click="ButtonRozrywka_Click_2" Content="Zarzadzaj rozgrywkami"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Kopakabana" VerticalAlignment="Top" TextAlignment="Center" Height="53" Width="272" FontSize="36"/>
+        <Button x:Name="ButtonDruzyna" Content="Zarzadzaj druzynami" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.661,-0.257" FontSize="20" Height="50" Width="182" Click="ButtonDruzyna_Click"/>
+        <Button x:Name="ButtonSedzia" Content="Zarzadzaj sedziami" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.661,-0.257" FontSize="20" Height="50" Width="182" Margin="50,295,0,0" Click="ButtonSedzia_Click"/>
+    </Grid>
+
+</Window>
