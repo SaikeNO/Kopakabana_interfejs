@@ -19,6 +19,7 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeDruzyn : Window
     {
+        
         public OpcjeDruzyn()
         {
             InitializeComponent();

@@ -1,6 +1,9 @@
-﻿namespace Kopakabana
+﻿using System;
+
+namespace Kopakabana
 {
-	class Zawodnik : Osoba
+    [Serializable()]
+    class Zawodnik : Osoba
 	{
 		private int NumerKoszulki { get; }
 
