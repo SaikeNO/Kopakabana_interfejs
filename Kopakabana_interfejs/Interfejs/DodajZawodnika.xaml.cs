@@ -31,10 +31,5 @@ namespace Kopakabana
         {
             DialogResult = true;
         }
-
-        private void OnAnuluj_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -24,7 +24,7 @@ namespace Kopakabana
     {
         private ListaDruzyn listaDruzyn;
         private Stream stream;
-        private BinaryFormatter formatter;
+        private BinaryFormatter formatter = new BinaryFormatter();
         public OpcjeDruzynDalej()
         {
             InitializeComponent();
@@ -32,7 +32,6 @@ namespace Kopakabana
             if (File.Exists("Druzyny.bin"))
             {
                 stream = File.Open("Druzyny.bin", FileMode.Open);
-                formatter = new BinaryFormatter();
                 listaDruzyn = (ListaDruzyn)formatter.Deserialize(stream);
                 stream.Close();
             }
@@ -52,10 +51,45 @@ namespace Kopakabana
             DodajDruzyne dodajDruzyne = new();
             if (true == dodajDruzyne.ShowDialog())
             {
-                /*Druzyna druzyna = new(dodajDruzyne.NazwaDruzyny.Text, dodajDruzyne.listaZawodnikow);
+                List<Zawodnik> listaZawodnikow = new();
+                foreach(Zawodnik item in dodajDruzyne.listaWybranychZawodnikowKontrolka.Items)
+                {
+                    listaZawodnikow.Add(item);
+                }
+
+                Druzyna druzyna = new(dodajDruzyne.NazwaDruzyny.Text, listaZawodnikow);
                 listaDruzyn.DodajDruzyne(druzyna);
                 Druzyny.Items.Add(druzyna);
-                */
+                
+                ZapisDoPliku();
+            }
+        }
+        private void EdytujDruzyne_Click(object sender, RoutedEventArgs e)
+        {
+            DodajDruzyne dodajDruzyne = new();
+
+            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna) return;
+
+            dodajDruzyne.NazwaDruzyny.Text = wybranaDruzyna.Nazwa;
+            foreach(Zawodnik zawodnik in wybranaDruzyna.GetZawodnicy())
+            {
+                dodajDruzyne.listaWybranychZawodnikowKontrolka.Items.Add(zawodnik);
+                dodajDruzyne.listaZawodnikowKontrolka.Items.Remove(zawodnik);
+            }
+   
+
+            if (true == dodajDruzyne.ShowDialog())
+            {
+                List<Zawodnik> listaZawodnikow = new();
+                foreach (Zawodnik item in dodajDruzyne.listaWybranychZawodnikowKontrolka.Items)
+                {
+                    listaZawodnikow.Add(item);
+                }
+
+                wybranaDruzyna.Nazwa = dodajDruzyne.NazwaDruzyny.Text;
+                wybranaDruzyna.SetZawodnicy(listaZawodnikow);
+                Druzyny.Items.Refresh();
+
                 ZapisDoPliku();
             }
         }

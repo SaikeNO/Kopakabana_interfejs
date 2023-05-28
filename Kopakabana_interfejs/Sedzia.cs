@@ -13,7 +13,7 @@ namespace Kopakabana
         }
         public override string ToString()
         {
-            return $"Sedzia {Name} {Surname}, Sport {Sport}";
+            return $"{Name} {Surname}, Sport {Sport}";
         }
     }
 }

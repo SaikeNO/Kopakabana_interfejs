@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Kopakabana
 {
-	class Druzyna
+    [Serializable()]
+    class Druzyna
 	{
 		private List<Zawodnik> zawodnicy = new();
-		private string Nazwa { get; set; }
+		public string Nazwa { get; set; }
 
 		public Druzyna(string nazwa)
 		{
@@ -35,6 +36,10 @@ namespace Kopakabana
         public List<Zawodnik> GetZawodnicy()
         {
             return zawodnicy;
+        }
+        public void SetZawodnicy(List<Zawodnik> lista)
+        {
+            zawodnicy = lista;
         }
         public override string ToString()
         {

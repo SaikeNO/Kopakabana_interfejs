@@ -24,7 +24,7 @@ namespace Kopakabana
     {
         private List<Zawodnik> listaZawodnikow;
         private Stream stream;
-        private BinaryFormatter formatter;
+        private BinaryFormatter formatter = new BinaryFormatter();
         public OpcjeZawodnikow()
         {
             InitializeComponent();
@@ -32,7 +32,6 @@ namespace Kopakabana
             if (File.Exists("Zawodnicy.bin"))
             {
                 stream = File.Open("Zawodnicy.bin", FileMode.Open);
-                formatter = new BinaryFormatter();
                 listaZawodnikow = (List<Zawodnik>)formatter.Deserialize(stream);
                 stream.Close();
             }

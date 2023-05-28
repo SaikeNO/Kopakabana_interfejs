@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Kopakabana
 {
+	[Serializable()]
 	class ListaDruzyn
 	{
 		private List<Druzyna> druzyny = new();

@@ -24,14 +24,13 @@ namespace Kopakabana
     {
         private Kantorek kantorek;
         private Stream stream;
-        private BinaryFormatter formatter;
+        private BinaryFormatter formatter = new BinaryFormatter();
         public OpcjeSedziow()
         {
             InitializeComponent();
             if (File.Exists("Sedziowie.bin"))
             {
                 stream = File.Open("Sedziowie.bin", FileMode.Open);
-                formatter = new BinaryFormatter();
                 kantorek = (Kantorek)formatter.Deserialize(stream);
                 stream.Close();
             }
