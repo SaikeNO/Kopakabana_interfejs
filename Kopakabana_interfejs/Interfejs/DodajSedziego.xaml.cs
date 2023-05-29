@@ -39,7 +39,15 @@ namespace Kopakabana
 
         private void OnOK_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            if (string.IsNullOrEmpty(TextBoxImie.Text) || string.IsNullOrEmpty(TextBoxNazwisko.Text))
+            {
+                MessageBox.Show("Uzupełnij Dane", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                DialogResult = true;
+            }
+            
         }
 
         
