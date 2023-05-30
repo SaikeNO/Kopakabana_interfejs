@@ -93,6 +93,14 @@ namespace Kopakabana
                 ZapisDoPliku();
             }
         }
+        private void UsunDruzyne_Click(object sender, EventArgs e)
+        {
+            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna) return;
+            listaDruzyn.UsunDruzyne(wybranaDruzyna);
+            Druzyny.Items.Remove(wybranaDruzyna);
+            
+            ZapisDoPliku();
+        }
         public void ZapisDoPliku()
         {
             stream = File.Open("Druzyny.bin", FileMode.Create);
