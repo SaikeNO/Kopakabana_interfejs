@@ -63,8 +63,9 @@ namespace Kopakabana
 
         private void UsunZawodnika_Click(object sender, RoutedEventArgs e)
         {
-            listaZawodnikow.RemoveAt(Zawodnicy.SelectedIndex);
-            Zawodnicy.Items.RemoveAt(Zawodnicy.SelectedIndex);
+            if (Zawodnicy.SelectedItem is not Zawodnik wybranyZawodnik) return;
+            listaZawodnikow.Remove(wybranyZawodnik);
+            Zawodnicy.Items.Remove(wybranyZawodnik);
 
             ZapisDoPliku();
         }

@@ -1,0 +1,19 @@
+﻿<Window x:Class="Kopakabana.DodajDruzynyDoKwalifikacji"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kopakabana"
+        mc:Ignorable="d"
+        Title="DodajDruzyny" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="listaDruzynKontrolka" Margin="40,68,486,55"/>
+        <ListBox x:Name="listaWybranychDruzynKontrolka" Margin="486,68,40,55"/>
+        <Button Content="Dodaj >>" HorizontalAlignment="Center" Margin="0,68,0,0" VerticalAlignment="Top" FontSize="22" Width="110" Click="AddButton_Click"/>
+        <Button Content="&lt;&lt; Usuń" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" FontSize="22" Width="110" Click="RemoveButton_Click"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="22" Width="110" Margin="0,268,0,0" Click="OnOK_click"/>
+        <Button x:Name="OnAnuluj" IsCancel="True" Content="Anuluj" HorizontalAlignment="Center" Margin="0,306,0,0" VerticalAlignment="Top" FontSize="22" Width="110"/>
+        <TextBlock HorizontalAlignment="Left" Margin="576,47,0,0" TextWrapping="Wrap" Text="Wybrane Drużyny" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="128,47,0,0" TextWrapping="Wrap" Text="Wszystkie Drużyny" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

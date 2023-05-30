@@ -7,4 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Interfejs\OpcjeKwalifikacjeDalej.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

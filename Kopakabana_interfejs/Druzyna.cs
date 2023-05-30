@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace Kopakabana
 {
@@ -40,6 +41,14 @@ namespace Kopakabana
         public void SetZawodnicy(List<Zawodnik> lista)
         {
             zawodnicy = lista;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj is not Druzyna) return false;
+
+            Druzyna druzyna = (Druzyna)obj;
+
+            return druzyna.Nazwa == Nazwa;
         }
         public override string ToString()
         {

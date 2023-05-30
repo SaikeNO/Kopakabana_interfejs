@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kopakabana"
         mc:Ignorable="d"
-        Title="OpcjeKwalifikacje" Height="410" Width="789">
+       Title="OpcjeKwalifikacji" Height="207" Width="668">
     <Grid>
-        <Button x:Name="DodajDruzyne" Content="Wybierz Sędziego" HorizontalAlignment="Left" Margin="29,42,0,0" VerticalAlignment="Top" FontSize="22"/>
-
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="246,42,54,63"/>
+        <Button x:Name="Siatkowka" Content="Siatkówka" HorizontalAlignment="Left" Margin="66,0,0,0" VerticalAlignment="Center" FontSize="22" Padding="10 0" Click="Button_Click" />
+        <Button x:Name="DwaOgnie" Content="Dwa Ognie" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Center" FontSize="22" Padding="10 0" Click="Button_Click" />
+        <Button x:Name="PrzeciaganieLiny" Content="Przeciąganie Liny" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Padding="10 0" Click="Button_Click" />
 
     </Grid>
 </Window>

@@ -19,22 +19,15 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeKwalifikacje : Window
     {
-        private Kwalifikacje kwalifikacje;
         public OpcjeKwalifikacje()
         {
             InitializeComponent();
         }
 
-        private void Tabela_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpcjeTabela opcjeTabela = new();
-            opcjeTabela.ShowDialog();
-        }
-
-        private void Kwalifikacje_Click(object sender, RoutedEventArgs e)
-        {
-            OpcjeDruzynDalej opcjeDruzynDalej = new OpcjeDruzynDalej();
-            opcjeDruzynDalej.ShowDialog();
+            OpcjeKwalifikacjeDalej opcjeKwalifikacjeDalej = new OpcjeKwalifikacjeDalej();
+            opcjeKwalifikacjeDalej.ShowDialog();
         }
     }
 }
