@@ -29,7 +29,17 @@ namespace Kopakabana
         }
         private void OnOK_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            if (string.IsNullOrEmpty(ImieZawodnika.Text) || string.IsNullOrEmpty(NazwiskoZawodnika.Text) || string.IsNullOrEmpty(NumerKoszulkiText.Text) )
+            {
+                MessageBox.Show("Imie, nazwisko i nr koszulki jest wymagana.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(!int.TryParse(NumerKoszulkiText.Text, out _)){
+                MessageBox.Show("Nr koszulki musi być liczbą.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                DialogResult = true;
+            }
         }
     }
 }
