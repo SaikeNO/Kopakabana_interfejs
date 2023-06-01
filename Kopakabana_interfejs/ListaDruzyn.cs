@@ -10,7 +10,10 @@ namespace Kopakabana
 
 		public void DodajDruzyne(Druzyna druzyna)
 		{
-			druzyny.Add(druzyna);
+			if(!druzyny.Contains(druzyna)) 
+			{
+				druzyny.Add(druzyna);
+			}
 		}
 
 		public Druzyna UsunDruzyne(Druzyna druzyna)
@@ -22,6 +25,10 @@ namespace Kopakabana
 		public List<Druzyna> GetListaDruzyn()
 		{
 			return druzyny;
+		}
+		public void Clear()
+		{
+			druzyny.Clear();
 		}
 	}
 }

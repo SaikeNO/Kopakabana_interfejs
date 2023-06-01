@@ -26,7 +26,8 @@ namespace Kopakabana
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpcjeKwalifikacjeDalej opcjeKwalifikacjeDalej = new OpcjeKwalifikacjeDalej();
+            Button clickedButton = (Button)sender;
+            OpcjeKwalifikacjeDalej opcjeKwalifikacjeDalej = new(clickedButton.Name);
             opcjeKwalifikacjeDalej.ShowDialog();
         }
     }

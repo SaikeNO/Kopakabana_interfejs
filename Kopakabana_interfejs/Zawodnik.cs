@@ -3,7 +3,7 @@
 namespace Kopakabana
 {
     [Serializable()]
-    class Zawodnik : Osoba
+    public class Zawodnik : Osoba
 	{
 		public int NumerKoszulki { get; set; }
 

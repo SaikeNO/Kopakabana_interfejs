@@ -23,7 +23,7 @@ namespace Kopakabana
     {
         private ListaDruzyn listaDruzyn;
         private Stream stream;
-        private BinaryFormatter formatter = new BinaryFormatter();
+        private readonly BinaryFormatter formatter = new();
         public DodajDruzynyDoKwalifikacji()
         {
             InitializeComponent();
@@ -38,10 +38,7 @@ namespace Kopakabana
                 listaDruzyn = new();
             }
 
-            foreach (Druzyna druzyna in listaDruzyn.GetListaDruzyn())
-            {
-                listaDruzynKontrolka.Items.Add(druzyna);
-            }
+            listaDruzyn.GetListaDruzyn().ForEach(druzyna => listaDruzynKontrolka.Items.Add(druzyna));
         }
 
         private void OnOK_click(object sender, RoutedEventArgs e)
@@ -51,19 +48,25 @@ namespace Kopakabana
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if(listaDruzynKontrolka.SelectedItem != null)
-            {
-                listaWybranychDruzynKontrolka.Items.Add(listaDruzynKontrolka.SelectedItem as Druzyna);
-                listaDruzynKontrolka.Items.Remove(listaDruzynKontrolka.SelectedItem as Druzyna);
-            }
+            if (listaDruzynKontrolka.SelectedItem is not Druzyna druzyna) return;
+
+            MoveToWybraneDruzyny(druzyna);
         }
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listaWybranychDruzynKontrolka.SelectedItem != null)
-            {
-                listaDruzynKontrolka.Items.Add(listaWybranychDruzynKontrolka.SelectedItem as Druzyna);
-                listaWybranychDruzynKontrolka.Items.Remove(listaWybranychDruzynKontrolka.SelectedItem as Druzyna);
-            }
+            if (listaWybranychDruzynKontrolka.SelectedItem is not Druzyna druzyna) return;
+
+            MoveToDruzyny(druzyna);
+        }
+        public void MoveToWybraneDruzyny(Druzyna druzyna)
+        {
+            listaWybranychDruzynKontrolka.Items.Add(druzyna);
+            listaDruzynKontrolka.Items.Remove(druzyna);
+        }
+        public void MoveToDruzyny(Druzyna druzyna)
+        {
+            listaDruzynKontrolka.Items.Add(druzyna);
+            listaWybranychDruzynKontrolka.Items.Remove(druzyna);
         }
     }
 }

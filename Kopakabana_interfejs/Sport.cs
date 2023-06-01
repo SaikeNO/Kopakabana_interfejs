@@ -3,12 +3,12 @@
 namespace Kopakabana
 {
     [Serializable()]
-    class Sport
+    public class Sport
     {
 
     }
     [Serializable()]
-    class Siatkowka : Sport
+    public class Siatkowka : Sport
     {
         public override string ToString()
         {
@@ -16,7 +16,7 @@ namespace Kopakabana
         }
     }
     [Serializable()]
-    class DwaOgnie : Sport
+    public class DwaOgnie : Sport
     {
         public override string ToString()
         {
@@ -24,7 +24,7 @@ namespace Kopakabana
         }
     }
     [Serializable()]
-    class PrzeciaganieLiny : Sport
+    public class PrzeciaganieLiny : Sport
     {
         public override string ToString()
         {

@@ -3,7 +3,7 @@
 namespace Kopakabana
 {
     [Serializable()]
-    class Osoba
+    public class Osoba
     {
         public string Name { get; set; }
         public string Surname { get; set; }

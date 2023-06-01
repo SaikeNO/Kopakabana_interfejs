@@ -26,12 +26,31 @@ namespace Kopakabana
         private ListaDruzyn wybraneDruzyny = new();
         private Stream stream;
         private BinaryFormatter formatter = new BinaryFormatter();
-        public OpcjeKwalifikacjeDalej()
+        private Sport Sport { get; set; }
+        private string fileName;
+        public OpcjeKwalifikacjeDalej(string sport)
         {
             InitializeComponent();
-            if (File.Exists("WybraneDruzyny.bin"))
+
+            if(sport == "DwaOgnie")
             {
-                stream = File.Open("WybraneDruzyny.bin", FileMode.Open);
+                Sport = new DwaOgnie();
+                fileName = "WybraneDruzynyDwaOgnie.bin";
+            }
+            else if(sport == "PrzeciaganieLiny")
+            {
+                Sport = new PrzeciaganieLiny();
+                fileName = "WybraneDruzynyPrzeciaganieLiny.bin";
+            }
+            else
+            {
+                Sport = new Siatkowka();
+                fileName = "WybraneDruzynySiatkowka.bin";
+            }
+
+            if (File.Exists(fileName))
+            {
+                stream = File.Open(fileName, FileMode.Open);
                 wybraneDruzyny = (ListaDruzyn)formatter.Deserialize(stream);
                 stream.Close();
             }
@@ -40,26 +59,19 @@ namespace Kopakabana
                 wybraneDruzyny = new();
             }
 
-            foreach (Druzyna druzyna in wybraneDruzyny.GetListaDruzyn())
-            {
-                Druzyny.Items.Add(druzyna);
-            }
+            wybraneDruzyny.GetListaDruzyn().ForEach(druzyna => Druzyny.Items.Add(druzyna));
         }
 
         private void DodajDruzyny_Click(object sender, RoutedEventArgs e)
         {
             DodajDruzynyDoKwalifikacji dodajDruzynyDoKwalifikacji = new();
             
+            wybraneDruzyny.GetListaDruzyn().ForEach(druzyna => dodajDruzynyDoKwalifikacji.MoveToWybraneDruzyny(druzyna));
             
-            foreach (Druzyna druzyna in wybraneDruzyny.GetListaDruzyn())
-            {
-                dodajDruzynyDoKwalifikacji.listaWybranychDruzynKontrolka.Items.Add(druzyna);
-                dodajDruzynyDoKwalifikacji.listaDruzynKontrolka.Items.Remove(druzyna);
-            }
-
             if (true == dodajDruzynyDoKwalifikacji.ShowDialog())
             {
                 Druzyny.Items.Clear();
+                wybraneDruzyny.Clear();
                 foreach (Druzyna druzyna in dodajDruzynyDoKwalifikacji.listaWybranychDruzynKontrolka.Items)
                 {
                     Druzyny.Items.Add(druzyna);
@@ -71,7 +83,7 @@ namespace Kopakabana
         }
         public void ZapisDoPliku()
         {
-            stream = File.Open("WybraneDruzyny.bin", FileMode.Create);
+            stream = File.Open(fileName, FileMode.Create);
             formatter.Serialize(stream, wybraneDruzyny);
             stream.Close();
         }

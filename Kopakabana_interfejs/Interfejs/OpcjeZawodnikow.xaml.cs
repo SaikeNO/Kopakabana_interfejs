@@ -71,8 +71,8 @@ namespace Kopakabana
         }
         private void EdytujZawodnika_Click(object sender, RoutedEventArgs e)
         {
+            if (Zawodnicy.SelectedItem is not Zawodnik zawodnik) return;
             DodajZawodnika dodajZawodnika = new();
-            Zawodnik zawodnik = listaZawodnikow[Zawodnicy.SelectedIndex];
 
             dodajZawodnika.ImieZawodnika.Text = zawodnik.Name;
             dodajZawodnika.NazwiskoZawodnika.Text = zawodnik.Surname;

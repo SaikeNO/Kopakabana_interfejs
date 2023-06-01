@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace Kopakabana
 {
     [Serializable()]
-    class Druzyna
+    public class Druzyna
 	{
 		private List<Zawodnik> zawodnicy = new();
 		public string Nazwa { get; set; }
@@ -42,17 +41,22 @@ namespace Kopakabana
         {
             zawodnicy = lista;
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(Object? obj)
         {
-            if (obj is not Druzyna) return false;
+            if ((obj == null) || !GetType().Equals(obj.GetType())) return false;
 
             Druzyna druzyna = (Druzyna)obj;
 
-            return druzyna.Nazwa == Nazwa;
+            return string.Equals(druzyna.Nazwa, Nazwa);
         }
         public override string ToString()
         {
             return Nazwa;
+        }
+
+        public override int GetHashCode()
+        {
+            return Nazwa.GetHashCode();
         }
     }
 }
