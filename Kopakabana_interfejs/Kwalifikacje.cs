@@ -8,35 +8,38 @@ namespace Kopakabana
 		private Sport Sport { get; set; }
 		private List<Rozgrywka> listaRozgrywek = new();
 
-        public Kwalifikacje(Sport sport, List<Druzyna> listaDruzyn, Kantorek kantorek)
+		public Kwalifikacje(Sport sport, ListaDruzyn listaDruzyn)
 		{
 			Sport = sport;
-            Tabela = new Tabela(listaDruzyn, sport);
-			
-			for (int i = 0; i < listaDruzyn.Count; i++)
+			Tabela = new Tabela(listaDruzyn.GetListaDruzyn());
+
+			for (int i = 0; i < listaDruzyn.GetListaDruzyn().Count; i++)
 			{
-				for (int j = i + 1; j < listaDruzyn.Count; j++)
+				for (int j = i + 1; j < listaDruzyn.GetListaDruzyn().Count; j++)
 				{
 					if (Sport is Siatkowka)
 					{
-						listaRozgrywek.Add(new RozgrywkaSiatkowka(listaDruzyn[i], listaDruzyn[j]));
+						listaRozgrywek.Add(new RozgrywkaSiatkowka(listaDruzyn.GetListaDruzyn()[i], listaDruzyn.GetListaDruzyn()[j]));
 					}
 					else
 					{
-						listaRozgrywek.Add(new Rozgrywka(listaDruzyn[i], listaDruzyn[j]));
+						listaRozgrywek.Add(new Rozgrywka(listaDruzyn.GetListaDruzyn()[i], listaDruzyn.GetListaDruzyn()[j]));
 					}
 				}
 			}
 		}
-		public void Rozegraj()
+
+		public List<Rozgrywka> GetListaRozgrywek()
 		{
-			foreach(Rozgrywka rozgrywka in listaRozgrywek)
-			{
-				rozgrywka.Rozegraj();
-				Tabela.DodajPunkt(rozgrywka.WygranaDruzyna);
-			}
+			return listaRozgrywek;
 		}
-		public List<Druzyna> ZnajdzNajlepsze4()
+
+		public List<WierszTabeli> GetTabela()
+		{
+			return Tabela.GetWiersze();
+		}
+
+		public ListaDruzyn ZnajdzNajlepsze4()
 		{
 			return Tabela.ZnajdzNajlepsze4();
 		}

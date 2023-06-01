@@ -4,8 +4,8 @@ namespace Kopakabana
 {
     class Tabela
     {
-        private List<WierszTabeli> wiersze = new();
-        public Tabela(List<Druzyna> listaDruzyn, Sport sport)
+        private readonly List<WierszTabeli> wiersze = new();
+        public Tabela(List<Druzyna> listaDruzyn)
         {
             foreach (Druzyna druzyna in listaDruzyn)
             {
@@ -25,22 +25,22 @@ namespace Kopakabana
         {
             wiersze.Sort((a, b) => b.Punkty.CompareTo(a.Punkty));
         }
-        public List<Druzyna> ZnajdzNajlepsze4()
+        public ListaDruzyn ZnajdzNajlepsze4()
         {
-            List<Druzyna> druzyny = new();
+            ListaDruzyn listaDruzyn = new();
 
             for (int i = 0; i < 4; i++)
             {
-                druzyny.Add(wiersze[i].Druzyna);
+                listaDruzyn.DodajDruzyne(wiersze[i].Druzyna);
             }
 
-            return druzyny;
+            return listaDruzyn;
         }
-        public List<WierszTabeli> GetTabela()
+        public List<WierszTabeli> GetWiersze()
         {
             return wiersze;
         }
-        public string WyswietlTabele()
+        public override string ToString()
         {
             return string.Join("\n", wiersze);
         }

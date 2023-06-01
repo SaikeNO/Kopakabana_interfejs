@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Kopakabana
 {
 	[Serializable()]
-	class ListaDruzyn
+	public class ListaDruzyn
 	{
 		private List<Druzyna> druzyny = new();
 

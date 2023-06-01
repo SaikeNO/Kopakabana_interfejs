@@ -23,7 +23,7 @@ namespace Kopakabana
     public partial class OpcjeDruzynDalej : Window
     {
         private ListaDruzyn listaDruzyn;
-        private Stream stream;
+        private Stream? stream;
         private BinaryFormatter formatter = new BinaryFormatter();
         public OpcjeDruzynDalej()
         {

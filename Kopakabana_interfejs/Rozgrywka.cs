@@ -1,6 +1,6 @@
 namespace Kopakabana
 {
-    class Rozgrywka
+    public class Rozgrywka
     {
         private Druzyna druzyna1, druzyna2;
         public Druzyna? WygranaDruzyna { get; set; }
@@ -49,16 +49,16 @@ namespace Kopakabana
         {
             if(Sedzia == null)
             {
-                return $"Rozgrywka: {druzyna1} vs {druzyna2}";
+                return $"{druzyna1} vs {druzyna2}";
             } 
             else
             {
-                return $"Rozgrywka: {druzyna1} vs {druzyna2}\nSedzia: {Sedzia}";
+                return $"{druzyna1} vs {druzyna2}\nSedzia: {Sedzia}";
             }
         }
         public static string WyswietlDruzyny(Druzyna druzyna1, Druzyna druzyna2)
         {
-            return $"Rozgrywka: {druzyna1} vs {druzyna2}";
+            return $"{druzyna1} vs {druzyna2}";
         }
     }
 }

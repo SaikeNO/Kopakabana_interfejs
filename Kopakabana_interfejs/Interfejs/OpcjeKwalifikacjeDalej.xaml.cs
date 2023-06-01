@@ -22,10 +22,9 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeKwalifikacjeDalej : Window
     {
-        private Kwalifikacje kwalifikacje;
         private ListaDruzyn wybraneDruzyny = new();
-        private Stream stream;
-        private BinaryFormatter formatter = new BinaryFormatter();
+        private Stream? stream;
+        private BinaryFormatter formatter = new();
         private Sport Sport { get; set; }
         private string fileName;
         public OpcjeKwalifikacjeDalej(string sport)
@@ -79,6 +78,15 @@ namespace Kopakabana
                 }
 
                 ZapisDoPliku();
+            }
+        }
+        private void GenerujKwalifikacje_Click(object sender, EventArgs e)
+        {
+            OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
+
+            if (true == opcjeKwalifikacjeGeneruj.ShowDialog())
+            {
+               
             }
         }
         public void ZapisDoPliku()

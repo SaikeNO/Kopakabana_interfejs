@@ -7,8 +7,9 @@
         mc:Ignorable="d"
        Title="OpcjeKwalifikacji" Height="368" Width="710">
     <Grid>
-        <Button x:Name="DodajDruzyny" Content="Dodaj Druzyny" HorizontalAlignment="Left" Margin="30,42,0,0" VerticalAlignment="Top" FontSize="22" Click="DodajDruzyny_Click" Padding="10 0"/>
-        <ListBox x:Name="Druzyny" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="214,42,72,65"/>
-
+        <Button x:Name="DodajDruzyny" Content="Dodaj Druzyny" HorizontalAlignment="Left" Margin="30,42,0,0" VerticalAlignment="Top" FontSize="22" Click="DodajDruzyny_Click" Padding="10 0" Width="215"/>
+        <ListBox x:Name="Druzyny" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,41,35,66"/>
+        <TextBlock HorizontalAlignment="Left" Margin="416,20,0,0" TextWrapping="Wrap" Text="Wybrane Drużyny" VerticalAlignment="Top"/>
+        <Button x:Name="GenerujKwalifikacje" Content="Generuj Kwalifikacje" HorizontalAlignment="Left" Margin="30,78,0,0" VerticalAlignment="Top" FontSize="22" Click="GenerujKwalifikacje_Click" Padding="10 0"/>
     </Grid>
 </Window>

@@ -13,7 +13,7 @@
         public void DodajPunkt() { Punkty++; }
         public override string ToString()
         {
-            return $"{Punkty} {Druzyna}";
+            return $"{Punkty:D2} | {Druzyna}";
         }
     }
 }

@@ -22,9 +22,9 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeSedziow : Window
     {
-        private Kantorek kantorek;
-        private Stream stream;
-        private BinaryFormatter formatter = new BinaryFormatter();
+        private readonly Kantorek kantorek;
+        private Stream? stream;
+        private readonly BinaryFormatter formatter = new();
         public OpcjeSedziow()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace Kopakabana
 
         private void DodajSedziego_Click(object sender, RoutedEventArgs e)
         {
-            DodajSedziego oknosedzia = new DodajSedziego();
+            DodajSedziego oknosedzia = new();
             
             if(true == oknosedzia.ShowDialog())
             {

@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Interfejs\OpcjeKwalifikacjeGeneruj.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interfejs\OpcjeKwalifikacjeDalej.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
