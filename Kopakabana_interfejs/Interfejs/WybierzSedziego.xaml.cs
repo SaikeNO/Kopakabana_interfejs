@@ -28,6 +28,7 @@ namespace Kopakabana
         {
             InitializeComponent();
             Rozgrywka.Text = rozgrywka.ToString();
+            WygranaDruzynaKontrolka.Text = rozgrywka.WygranaDruzyna?.ToString();
 
             if (File.Exists("Sedziowie.bin"))
             {
@@ -40,7 +41,7 @@ namespace Kopakabana
                 kantorek = new();
             }
 
-            foreach (Sedzia sedzia in kantorek.GetSedziowie())
+            foreach (Sedzia sedzia in kantorek.GetKantorekSportu(sport).GetSedziowie())
             {
                 SedziowieKontrolka.Items.Add(sedzia);
             }
@@ -50,8 +51,11 @@ namespace Kopakabana
         {
             if (SedziowieKontrolka.SelectedItem is not Sedzia) 
             {
-                MessageBox.Show("Zaznacz sędziego", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                MessageBox.Show("Wybierz sędziego", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+            } 
+            else if (!string.IsNullOrEmpty(WygranaDruzynaKontrolka.Text))
+            {
+                MessageBox.Show("Rozgrywka została już rozegrana", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

@@ -8,9 +8,11 @@
         Title="WybierzSedziego" Height="350" Width="600">
     <Grid>
         <TextBlock Text="Rozgrywka:" HorizontalAlignment="Left" Margin="33,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22"/>
-        <TextBlock Name="Rozgrywka" HorizontalAlignment="Left" Margin="147,21,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22"/>
-        <ListBox Name="SedziowieKontrolka" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,55,35,86"/>
-        <Button Content="Wybierz" HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" Padding="20 5" FontSize="22" Click="OnOk_Click"/>
-
+        <TextBlock x:Name="Rozgrywka" HorizontalAlignment="Left" Margin="147,21,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22"/>
+        <ListBox x:Name="SedziowieKontrolka" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="165,96,55,62" />
+        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="40,96,0,0" VerticalAlignment="Top" Padding="20 5" FontSize="22" Click="OnOk_Click"/>
+        <Button Content="Anuluj" HorizontalAlignment="Left" IsCancel="True" Margin="40,143,0,0" VerticalAlignment="Top" Padding="20 5" FontSize="22" Width="120" />
+        <TextBlock Text="Wygrana drużyna:" HorizontalAlignment="Left" Margin="39,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22"/>
+        <TextBlock Text="" x:Name="WygranaDruzynaKontrolka" HorizontalAlignment="Left" Margin="219,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22"/>
     </Grid>
 </Window>
