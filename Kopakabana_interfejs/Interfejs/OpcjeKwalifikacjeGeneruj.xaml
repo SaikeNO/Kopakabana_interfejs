@@ -7,11 +7,13 @@
         mc:Ignorable="d"
        Title="OpcjeKwalifikacjeGeneruj" Height="368" Width="1000">
     <Grid>
-        <Button x:Name="WybierzSedziego" Content="Wybierz Sędziego" HorizontalAlignment="Left" Margin="30,42,0,0" VerticalAlignment="Top" FontSize="22" Click="WybierzSedziego_Click" Padding="10 0" />
-        <ListBox x:Name="Rozgrywki" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,41,402,66"/>
-        <ListBox x:Name="Tabela" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="603,41,25,66"/>
-        <TextBlock HorizontalAlignment="Left" Margin="388,20,0,0" TextWrapping="Wrap" Text="Rozgrywki" VerticalAlignment="Top"/>
-        <Button x:Name="Rozegraj" Content="Rozegraj" HorizontalAlignment="Left" Margin="30,78,0,0" VerticalAlignment="Top" FontSize="22" Click="Rozegraj_Click" Padding="10 0" Width="195"/>
-        <TextBlock HorizontalAlignment="Left" Margin="772,20,0,0" TextWrapping="Wrap" Text="Tabela" VerticalAlignment="Top"/>
+        <Button x:Name="WybierzSedziego" Content="Wybierz Sedziego" HorizontalAlignment="Left" Margin="30,93,0,0" VerticalAlignment="Top" FontSize="22" Click="WybierzSedziego_Click" Padding="10 0" Width="195" />
+        <ListBox x:Name="Rozgrywki" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,93,402,66"/>
+        <ListBox x:Name="Tabela" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="603,93,25,66"/>
+        <TextBlock HorizontalAlignment="Left" Margin="397,72,0,0" TextWrapping="Wrap" Text="Rozgrywki" VerticalAlignment="Top"/>
+        <Button x:Name="Rozegraj" Content="Rozegraj" HorizontalAlignment="Left" Margin="30,129,0,0" VerticalAlignment="Top" FontSize="22" Click="Rozegraj_Click" Padding="10 0" Width="195" Height="30"/>
+        <Button x:Name="Reset" Content="Resetuj" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Click="Reset_Click" Padding="10 0" Width="195" Margin="30,164,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="772,72,0,0" TextWrapping="Wrap" Text="Tabela" VerticalAlignment="Top"/>
+        <TextBlock x:Name="SportKontrolka" HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" Text="sport" VerticalAlignment="Top" FontSize="30"/>
     </Grid>
 </Window>

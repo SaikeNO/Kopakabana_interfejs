@@ -24,25 +24,24 @@ namespace Kopakabana
     {
         private Kwalifikacje kwalifikacje;
         private Stream? stream;
-        private BinaryFormatter formatter = new();
+        private readonly BinaryFormatter formatter = new();
         private Sport Sport { get; set; }
-        private string fileName;
+        private string fileName = "KwalifikacjeSiatkowka.bin";
+        private ListaDruzyn ListaDruzyn { get; set; }
         public OpcjeKwalifikacjeGeneruj(Sport sport, ListaDruzyn listaDruzyn)
         {
             InitializeComponent();
             Sport = sport;
-            
-            if(Sport is DwaOgnie)
+            ListaDruzyn = listaDruzyn;
+            SportKontrolka.Text = Sport.ToString();
+
+            if (Sport is DwaOgnie)
             {
                 fileName = "KwalifikacjeDwaOgnie.bin";
             }
             else if(Sport is PrzeciaganieLiny)
             {
                 fileName = "KwalifikacjePrzeciaganieLiny.bin";
-            }
-            else
-            {
-                fileName = "KwalifikacjeSiatkowka.bin";
             }
 
             if (File.Exists(fileName))
@@ -56,8 +55,8 @@ namespace Kopakabana
                 kwalifikacje = new(Sport, listaDruzyn);
             }
 
-            kwalifikacje.GetListaRozgrywek().ForEach(rozgrywka => Rozgrywki.Items.Add(rozgrywka));
-            kwalifikacje.GetTabela().ForEach(wiersz => Tabela.Items.Add(wiersz));
+            PrintListBoxes();
+            ZapisDoPliku();
         }
 
         private void WybierzSedziego_Click(object sender, RoutedEventArgs e)
@@ -66,20 +65,64 @@ namespace Kopakabana
 
             WybierzSedziego wybierzSedziego = new(rozgrywka, Sport);
 
-            if(opcjeRozgrywka.ShowDialog() == true )
+            if(wybierzSedziego.ShowDialog() == true )
             {
-
+                rozgrywka.Sedzia = wybierzSedziego.SedziowieKontrolka.SelectedItem as Sedzia;
+                Rozgrywki.Items.Refresh();
+                ZapisDoPliku();
             }
         }
         private void Rozegraj_Click(object sender, EventArgs e)
         {
-            
+            if (Rozgrywki.SelectedItem is not Rozgrywka rozgrywka) return;
+
+            if (rozgrywka.Sedzia is null)
+            {
+                MessageBox.Show("Wybierz sędziego!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            OpcjeRozegraj opcjeRozegraj = new(rozgrywka);
+
+            if (opcjeRozegraj.ShowDialog() == true)
+            {
+                rozgrywka.WygranaDruzyna = opcjeRozegraj.Druzyna1Kontrolka.Content as Druzyna;
+                if (opcjeRozegraj.Druzyna2Kontrolka.IsChecked == true)
+                {
+                    rozgrywka.WygranaDruzyna = opcjeRozegraj.Druzyna2Kontrolka.Content as Druzyna;
+                }
+
+                MessageBox.Show($"Rozgrywka została rozegrana!\nWygrana Drużyna: {rozgrywka.WygranaDruzyna}", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                kwalifikacje.Tabela.DodajPunkt(rozgrywka.WygranaDruzyna);
+                kwalifikacje.Tabela.Sortuj();
+                
+                PrintListBoxes();
+                ZapisDoPliku();
+                
+            }
+        }
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Czy chcesz zresetować kwalifikacje?", "box", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                kwalifikacje = new(Sport, ListaDruzyn);
+                PrintListBoxes();
+                ZapisDoPliku();
+            }
         }
         public void ZapisDoPliku()
         {
             stream = File.Open(fileName, FileMode.Create);
             formatter.Serialize(stream, kwalifikacje);
             stream.Close();
+        }
+
+        private void PrintListBoxes()
+        {
+            Rozgrywki.Items.Clear();
+            Tabela.Items.Clear();
+            kwalifikacje.GetListaRozgrywek().ForEach(rozgrywka => Rozgrywki.Items.Add(rozgrywka));
+            kwalifikacje.GetTabela().ForEach(wiersz => Tabela.Items.Add(wiersz));
         }
     }
 }
