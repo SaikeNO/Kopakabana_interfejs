@@ -70,14 +70,29 @@ namespace Kopakabana
             }
             listaZawodnikow.Remove(wybranyZawodnik);
             Zawodnicy.Items.Remove(wybranyZawodnik);
+            if (File.Exists("Druzyny.bin"))
+            {
+                stream = File.Open("Druzyny.bin", FileMode.Open);
+                ListaDruzyn listaDruzyn = (ListaDruzyn)formatter.Deserialize(stream);
+                stream.Close();
+
+                listaDruzyn.GetListaDruzyn().ForEach(druzyna => druzyna.UsunZawodnika(wybranyZawodnik));
+                
+                stream = File.Open("Druzyny.bin", FileMode.Create);
+                formatter.Serialize(stream, listaDruzyn);
+                stream.Close();
+            }
 
             ZapisDoPliku();
+
         }
         private void EdytujZawodnika_Click(object sender, RoutedEventArgs e)
         {
-            if (Zawodnicy.SelectedItem is not Zawodnik zawodnik) {
+            if (Zawodnicy.SelectedItem is not Zawodnik zawodnik) 
+            {
                 MessageBox.Show("Wybierz zawodnika.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; }
+                return; 
+            }
             DodajZawodnika dodajZawodnika = new();
 
             dodajZawodnika.ImieZawodnika.Text = zawodnik.Name;

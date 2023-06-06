@@ -27,16 +27,6 @@ namespace Kopakabana
 
         }
 
-        private void TextBoxImie_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void WyborDyscypliny_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void OnOK_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxImie.Text) || string.IsNullOrEmpty(TextBoxNazwisko.Text))

@@ -10,7 +10,7 @@
         <Label x:Name="Imie" Content="Imie:" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Label x:Name="Nazwisko" Content="Nazwisko:" HorizontalAlignment="Left" Margin="32,71,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Label x:Name="Dyscyplina" Content="Dyscyplina" HorizontalAlignment="Left" Margin="32,115,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <TextBox x:Name="TextBoxImie" HorizontalAlignment="Left" Margin="186,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566" TextChanged="TextBoxImie_TextChanged"/>
+        <TextBox x:Name="TextBoxImie" HorizontalAlignment="Left" Margin="186,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566"/>
         <TextBox x:Name="TextBoxNazwisko" HorizontalAlignment="Left" Margin="186,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="566"/>
         <Button x:Name="OnOK" Content="OK" HorizontalAlignment="Left" Margin="518,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96" Click="OnOK_Click"/>
         <Button x:Name="OnAnuluj" IsCancel="True" Content="Anuluj" HorizontalAlignment="Left" Margin="656,188,0,0" VerticalAlignment="Top" FontSize="22" Width="96"/>

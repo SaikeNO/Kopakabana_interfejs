@@ -64,7 +64,7 @@ namespace Kopakabana
         {
             if (Rozgrywki.SelectedItem is not Rozgrywka rozgrywka) return;
 
-            WybierzSedziego wybierzSedziego = new(rozgrywka);
+            WybierzSedziego wybierzSedziego = new(rozgrywka, Sport);
 
             if(wybierzSedziego.ShowDialog() == true )
             {

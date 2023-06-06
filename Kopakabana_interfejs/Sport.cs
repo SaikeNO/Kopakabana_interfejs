@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace Kopakabana
 {
     [Serializable()]
-    public class Sport
-    {
-
-    }
+    public class Sport{}
     [Serializable()]
     public class Siatkowka : Sport
     {
+        public override bool Equals(object? obj)
+        {
+            return obj is Siatkowka;
+        }
         public override string ToString()
         {
             return "Siatkowka";

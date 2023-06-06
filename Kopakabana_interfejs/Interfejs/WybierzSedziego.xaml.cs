@@ -24,7 +24,7 @@ namespace Kopakabana
         private readonly Kantorek kantorek;
         private readonly Stream? stream;
         private readonly BinaryFormatter formatter = new();
-        public WybierzSedziego(Rozgrywka rozgrywka)
+        public WybierzSedziego(Rozgrywka rozgrywka, Sport sport)
         {
             InitializeComponent();
             Rozgrywka.Text = rozgrywka.ToString();
@@ -42,7 +42,20 @@ namespace Kopakabana
 
             foreach (Sedzia sedzia in kantorek.GetSedziowie())
             {
-                //listaSedziow.Items.Add(sedzia);
+                SedziowieKontrolka.Items.Add(sedzia);
+            }
+        }
+
+        private void OnOk_Click(object sender, RoutedEventArgs e)
+        {
+            if (SedziowieKontrolka.SelectedItem is not Sedzia) 
+            {
+                MessageBox.Show("Zaznacz sędziego", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                DialogResult = true;
             }
         }
     }

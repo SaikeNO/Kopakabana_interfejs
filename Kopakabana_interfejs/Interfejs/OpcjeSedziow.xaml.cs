@@ -53,15 +53,10 @@ namespace Kopakabana
             {
                 Sport sportSedzia = new Siatkowka();
                 
-                if((oknosedzia.RadioButtonSiatkowka.IsChecked)== true)
-                {
-                    sportSedzia = new Siatkowka();
-                }
                 if ((oknosedzia.RadioButtonPrzeciaganieLiny.IsChecked) == true)
                 {
                     sportSedzia = new PrzeciaganieLiny();
-                }
-                if ((oknosedzia.RadioButtonDwaOgnie.IsChecked) == true)
+                } else if ((oknosedzia.RadioButtonDwaOgnie.IsChecked) == true)
                 {
                     sportSedzia = new DwaOgnie();
                 }
@@ -106,15 +101,10 @@ namespace Kopakabana
             {
                 sedzia.Name = oknosedzia.TextBoxImie.Text;
                 sedzia.Surname = oknosedzia.TextBoxNazwisko.Text;
-                if ((oknosedzia.RadioButtonSiatkowka.IsChecked) == true)
-                {
-                    sportSedzia = new Siatkowka();
-                }
                 if ((oknosedzia.RadioButtonPrzeciaganieLiny.IsChecked) == true)
                 {
                     sportSedzia = new PrzeciaganieLiny();
-                }
-                if ((oknosedzia.RadioButtonDwaOgnie.IsChecked) == true)
+                }else if ((oknosedzia.RadioButtonDwaOgnie.IsChecked) == true)
                 {
                     sportSedzia = new DwaOgnie();
                 }
