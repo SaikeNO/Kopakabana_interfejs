@@ -76,14 +76,27 @@ namespace Kopakabana
         private void UsunSedziego_Click(object sender, RoutedEventArgs e)
         {
             kantorek.UsunSedziego(listaSedziow.SelectedIndex);
-            listaSedziow.Items.RemoveAt(listaSedziow.SelectedIndex);
+            try
+            {
+                listaSedziow.Items.RemoveAt(listaSedziow.SelectedIndex);
+            }
+            catch (ArgumentOutOfRangeException) {
+                listaSedziow.SelectedIndex = -1;
+                MessageBox.Show("Zaznacz sędziego.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             
             ZapisDoPliku();
         }
 
         private void EdytujSedziego_Click(object sender, RoutedEventArgs e)
         {
-            if (listaSedziow.SelectedItem is not Sedzia sedzia) return;
+
+            if (listaSedziow.SelectedItem is not Sedzia sedzia)
+            {
+                MessageBox.Show("Zaznacz sędziego.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                
             DodajSedziego oknosedzia = new();
             oknosedzia.TextBoxImie.Text = sedzia.Name;
             oknosedzia.TextBoxNazwisko.Text = sedzia.Surname;

@@ -15,7 +15,12 @@ namespace Kopakabana
         }
         public void UsunSedziego(int index)
         {
-            listaSedziow.RemoveAt(index);
+            try
+            {
+                listaSedziow.RemoveAt(index);
+            }
+            catch (ArgumentOutOfRangeException)
+            { }
             
         }
 
