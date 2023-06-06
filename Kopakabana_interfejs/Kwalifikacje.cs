@@ -8,7 +8,7 @@ namespace Kopakabana
 	{
 		public Tabela Tabela { get; set; }
 		private Sport Sport { get; set; }
-		private List<Rozgrywka> listaRozgrywek = new();
+		private readonly List<Rozgrywka> listaRozgrywek = new();
 
 		public Kwalifikacje(Sport sport, ListaDruzyn listaDruzyn)
 		{
@@ -44,6 +44,15 @@ namespace Kopakabana
 		public ListaDruzyn ZnajdzNajlepsze4()
 		{
 			return Tabela.ZnajdzNajlepsze4();
+		}
+		public bool CzyRozegrane()
+		{
+			foreach(Rozgrywka rozgrywka in listaRozgrywek)
+			{
+				if (rozgrywka.WygranaDruzyna is null) return false;
+			}
+
+			return true;
 		}
     }
 }

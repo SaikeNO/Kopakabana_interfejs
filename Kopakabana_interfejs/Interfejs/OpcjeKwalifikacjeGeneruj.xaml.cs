@@ -107,7 +107,21 @@ namespace Kopakabana
             {
                 kwalifikacje = new(Sport, ListaDruzyn);
                 PrintListBoxes();
+                File.Delete("Polfinaly.bin");
+                File.Delete("WygranaDruzyna.bin");
                 ZapisDoPliku();
+            }
+        }
+        private void Polfinaly_Click(object sender, RoutedEventArgs e)
+        {
+            if (kwalifikacje.CzyRozegrane())
+            {
+                Polfinaly polfinaly = new(kwalifikacje.ZnajdzNajlepsze4(), Sport);
+                polfinaly.ShowDialog();
+            } 
+            else
+            {
+                MessageBox.Show("Najpierw rozegraj wszystkie kwalifikacje!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         public void ZapisDoPliku()

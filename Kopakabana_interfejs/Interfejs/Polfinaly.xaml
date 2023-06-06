@@ -1,20 +1,18 @@
-﻿<Window x:Class="Kopakabana.OpcjeKwalifikacjeGeneruj"
+﻿<Window x:Class="Kopakabana.Polfinaly"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kopakabana"
         mc:Ignorable="d"
-       Title="OpcjeKwalifikacjeGeneruj" Height="368" Width="1000">
+        Title="Polfinaly" Height="350" Width="600">
     <Grid>
         <Button x:Name="WybierzSedziego" Content="Wybierz Sedziego" HorizontalAlignment="Left" Margin="30,93,0,0" VerticalAlignment="Top" FontSize="22" Click="WybierzSedziego_Click" Padding="10 0" Width="195" />
-        <ListBox x:Name="Rozgrywki" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,93,402,66"/>
-        <ListBox x:Name="Tabela" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="603,93,25,66"/>
-        <TextBlock HorizontalAlignment="Left" Margin="397,72,0,0" TextWrapping="Wrap" Text="Rozgrywki" VerticalAlignment="Top"/>
+        <ListBox x:Name="Rozgrywki" d:ItemsSource="{d:SampleData ItemCount=2}" Margin="250,93,35,101"/>
+        <TextBlock HorizontalAlignment="Left" Margin="381,72,0,0" TextWrapping="Wrap" Text="Rozgrywki" VerticalAlignment="Top"/>
         <Button x:Name="Rozegraj" Content="Rozegraj" HorizontalAlignment="Left" Margin="30,129,0,0" VerticalAlignment="Top" FontSize="22" Click="Rozegraj_Click" Padding="10 0" Width="195" Height="30"/>
-        <Button x:Name="Reset" Content="Resetuj" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="22" Click="Reset_Click" Padding="10 0" Width="195" Margin="30,164,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="772,72,0,0" TextWrapping="Wrap" Text="Tabela" VerticalAlignment="Top"/>
         <TextBlock x:Name="SportKontrolka" HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" Text="sport" VerticalAlignment="Top" FontSize="30"/>
-        <Button Content="Półfinały" HorizontalAlignment="Left" Margin="30,255,0,0" VerticalAlignment="Top" FontSize="22" Padding="20 0" Width="195" Click="Polfinaly_Click"/>
+        <Button x:Name="Final" Content="Finał" HorizontalAlignment="Left" Margin="30,199,0,0" VerticalAlignment="Top" FontSize="22" Click="Final_Click" Padding="10 0" Width="195" Height="30"/>
+        <Button x:Name="Resetuj" Content="Resetuj" HorizontalAlignment="Left" Margin="30,164,0,0" VerticalAlignment="Top" FontSize="22" Click="Reset_Click" Padding="10 0" Width="195" Height="30"/>
     </Grid>
 </Window>
