@@ -68,7 +68,11 @@ namespace Kopakabana
         {
             DodajDruzyne dodajDruzyne = new();
 
-            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna) return;
+            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna)
+            {
+                MessageBox.Show("Wybierz drużynę.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             dodajDruzyne.NazwaDruzyny.Text = wybranaDruzyna.Nazwa;
             foreach(Zawodnik zawodnik in wybranaDruzyna.GetZawodnicy())
@@ -95,7 +99,11 @@ namespace Kopakabana
         }
         private void UsunDruzyne_Click(object sender, EventArgs e)
         {
-            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna) return;
+            if (Druzyny.SelectedItem is not Druzyna wybranaDruzyna)
+            {
+                MessageBox.Show("Wybierz drużynę.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             listaDruzyn.UsunDruzyne(wybranaDruzyna);
             Druzyny.Items.Remove(wybranaDruzyna);
             

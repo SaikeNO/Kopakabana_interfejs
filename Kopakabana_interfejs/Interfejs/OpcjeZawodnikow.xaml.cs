@@ -63,7 +63,11 @@ namespace Kopakabana
 
         private void UsunZawodnika_Click(object sender, RoutedEventArgs e)
         {
-            if (Zawodnicy.SelectedItem is not Zawodnik wybranyZawodnik) return;
+            if (Zawodnicy.SelectedItem is not Zawodnik wybranyZawodnik)
+            {
+                MessageBox.Show("Wybierz zawodnika.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             listaZawodnikow.Remove(wybranyZawodnik);
             Zawodnicy.Items.Remove(wybranyZawodnik);
 
@@ -71,7 +75,9 @@ namespace Kopakabana
         }
         private void EdytujZawodnika_Click(object sender, RoutedEventArgs e)
         {
-            if (Zawodnicy.SelectedItem is not Zawodnik zawodnik) return;
+            if (Zawodnicy.SelectedItem is not Zawodnik zawodnik) {
+                MessageBox.Show("Wybierz zawodnika.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; }
             DodajZawodnika dodajZawodnika = new();
 
             dodajZawodnika.ImieZawodnika.Text = zawodnik.Name;
