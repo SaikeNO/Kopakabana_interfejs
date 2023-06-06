@@ -5,7 +5,7 @@ namespace Kopakabana
     [Serializable()]
     public class Sedzia : Osoba
     {
-		public Sport Sport { get; }
+		public Sport Sport { get; set; }
 
         public Sedzia(string name, string surname, Sport sport) : base(name, surname)
         {

@@ -83,10 +83,32 @@ namespace Kopakabana
 
         private void EdytujSedziego_Click(object sender, RoutedEventArgs e)
         {
-            DodajSedziego edycjaSedziego = new DodajSedziego();
-            if(true == (edycjaSedziego.ShowDialog()))
+            if (listaSedziow.SelectedItem is not Sedzia sedzia) return;
+            DodajSedziego oknosedzia = new();
+            oknosedzia.TextBoxImie.Text = sedzia.Name;
+            oknosedzia.TextBoxNazwisko.Text = sedzia.Surname;
+            Sport sportSedzia = new Siatkowka();
+            
+            if (true == (oknosedzia.ShowDialog()))
             {
+                sedzia.Name = oknosedzia.TextBoxImie.Text;
+                sedzia.Surname = oknosedzia.TextBoxNazwisko.Text;
+                if ((oknosedzia.RadioButtonSiatkowka.IsChecked) == true)
+                {
+                    sportSedzia = new Siatkowka();
+                }
+                if ((oknosedzia.RadioButtonPrzeciaganieLiny.IsChecked) == true)
+                {
+                    sportSedzia = new PrzeciaganieLiny();
+                }
+                if ((oknosedzia.RadioButtonDwaOgnie.IsChecked) == true)
+                {
+                    sportSedzia = new DwaOgnie();
+                }
+                sedzia.Sport = sportSedzia;
 
+                ZapisDoPliku();
+                listaSedziow.Items.Refresh();
             }
         }
         public void ZapisDoPliku()
