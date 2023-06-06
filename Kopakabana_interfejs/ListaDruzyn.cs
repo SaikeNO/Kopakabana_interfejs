@@ -28,6 +28,11 @@ namespace Kopakabana
 		{
 			return druzyny;
 		}
+
+		public int RozmiarListy()
+		{
+			return druzyny.Count;
+		}
 		public void Clear()
 		{
 			druzyny.Clear();

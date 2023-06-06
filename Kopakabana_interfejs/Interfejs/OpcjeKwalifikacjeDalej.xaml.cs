@@ -82,11 +82,15 @@ namespace Kopakabana
         }
         private void GenerujKwalifikacje_Click(object sender, EventArgs e)
         {
+            if (wybraneDruzyny.RozmiarListy() < 6)
+            {
+                MessageBox.Show("Kwalifikacje muszą mieć więcej niż 5 drużyn.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
-
             if (true == opcjeKwalifikacjeGeneruj.ShowDialog())
             {
-               
+
             }
         }
         public void ZapisDoPliku()
