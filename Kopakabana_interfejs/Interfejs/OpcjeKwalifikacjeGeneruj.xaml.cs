@@ -66,7 +66,7 @@ namespace Kopakabana
 
             WybierzSedziego wybierzSedziego = new(rozgrywka, Sport);
 
-            if(wybierzSedziego.ShowDialog() == true )
+            if(opcjeRozgrywka.ShowDialog() == true )
             {
 
             }

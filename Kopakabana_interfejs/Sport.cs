@@ -14,23 +14,44 @@ namespace Kopakabana
         }
         public override string ToString()
         {
-            return "Siatkowka";
+            return "Siatkówka";
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
     [Serializable()]
     public class DwaOgnie : Sport
     {
+        public override bool Equals(object? obj)
+        {
+            return obj is DwaOgnie;
+        }
         public override string ToString()
         {
-            return "DwaOgnie";
+            return "Dwa Ognie";
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
     [Serializable()]
     public class PrzeciaganieLiny : Sport
     {
+        public override bool Equals(object? obj)
+        {
+            return obj is PrzeciaganieLiny;
+        }
         public override string ToString()
         {
-            return "PrzeciaganieLiny";
+            return "Przeciąganie Liny";
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

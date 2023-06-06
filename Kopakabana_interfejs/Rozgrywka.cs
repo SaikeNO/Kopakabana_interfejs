@@ -1,8 +1,11 @@
+using System;
+
 namespace Kopakabana
 {
+    [Serializable()]
     public class Rozgrywka
     {
-        private Druzyna druzyna1, druzyna2;
+        public Druzyna druzyna1, druzyna2;
         public Druzyna? WygranaDruzyna { get; set; }
         public Sedzia? Sedzia { get; set; }
         
@@ -25,7 +28,7 @@ namespace Kopakabana
             } 
             else
             {
-                return $"{druzyna1} vs {druzyna2}\nSedzia: {Sedzia}";
+                return $"{druzyna1} vs {druzyna2}\nSedzia: {Sedzia.Name} {Sedzia.Surname}";
             }
         }
         public static string WyswietlDruzyny(Druzyna druzyna1, Druzyna druzyna2)

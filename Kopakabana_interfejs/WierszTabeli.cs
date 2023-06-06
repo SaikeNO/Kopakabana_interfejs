@@ -1,5 +1,8 @@
-﻿namespace Kopakabana
+﻿using System;
+
+namespace Kopakabana
 {
+    [Serializable()]
     class WierszTabeli 
     {
         public int Punkty { get; set; }

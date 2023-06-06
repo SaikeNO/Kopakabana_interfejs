@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Kopakabana
 {
+	[Serializable()]
 	class Kwalifikacje
 	{
-		private Tabela Tabela { get; set; }
+		public Tabela Tabela { get; set; }
 		private Sport Sport { get; set; }
 		private List<Rozgrywka> listaRozgrywek = new();
 

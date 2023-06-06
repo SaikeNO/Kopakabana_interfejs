@@ -1,5 +1,8 @@
+using System;
+
 namespace Kopakabana
 {
+    [Serializable()]
     class RozgrywkaSiatkowka : Rozgrywka
     {
         public Sedzia? sedzia1 { get; set; }

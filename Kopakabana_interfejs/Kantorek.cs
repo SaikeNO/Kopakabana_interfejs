@@ -6,7 +6,7 @@ namespace Kopakabana
     [Serializable()]
     class Kantorek
     {
-        private List<Sedzia> listaSedziow = new();
+        private readonly List<Sedzia> listaSedziow = new();
 
         public Kantorek() { }
         public Kantorek(List<Sedzia> lista)
@@ -35,7 +35,7 @@ namespace Kopakabana
         }
         public Kantorek GetKantorekSportu(Sport sport)
         {
-            return new Kantorek(listaSedziow.FindAll(s => s.Sport == sport));
+            return new Kantorek(listaSedziow.FindAll(s => s.Sport.Equals(sport)));
         }
         public override string ToString()
         {
