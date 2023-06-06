@@ -21,31 +21,26 @@ namespace Kopakabana
     /// </summary>
     public partial class DodajDruzynyDoKwalifikacji : Window
     {
-        private ListaDruzyn listaDruzyn;
-        private Stream stream;
-        private readonly BinaryFormatter formatter = new();
-        public DodajDruzynyDoKwalifikacji()
+        public DodajDruzynyDoKwalifikacji(ListaDruzyn wybraneDruzyny)
         {
             InitializeComponent();
             if (File.Exists("Druzyny.bin"))
             {
-                stream = File.Open("Druzyny.bin", FileMode.Open);
-                listaDruzyn = (ListaDruzyn)formatter.Deserialize(stream);
+                BinaryFormatter formatter = new();
+                Stream stream = File.Open("Druzyny.bin", FileMode.Open);
+                ListaDruzyn listaDruzyn = (ListaDruzyn)formatter.Deserialize(stream);
                 stream.Close();
-            }
-            else
-            {
-                listaDruzyn = new();
+                
+                listaDruzyn.GetListaDruzyn().ForEach(druzyna => listaDruzynKontrolka.Items.Add(druzyna));
             }
 
-            listaDruzyn.GetListaDruzyn().ForEach(druzyna => listaDruzynKontrolka.Items.Add(druzyna));
+            wybraneDruzyny.GetListaDruzyn().ForEach(druzyna => MoveToWybraneDruzyny(druzyna));
         }
 
         private void OnOK_click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
-
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (listaDruzynKontrolka.SelectedItem is not Druzyna druzyna) return;

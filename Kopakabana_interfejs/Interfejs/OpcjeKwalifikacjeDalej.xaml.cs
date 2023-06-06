@@ -22,16 +22,17 @@ namespace Kopakabana
     /// </summary>
     public partial class OpcjeKwalifikacjeDalej : Window
     {
-        private ListaDruzyn wybraneDruzyny = new();
+        private readonly ListaDruzyn wybraneDruzyny = new();
+        private readonly BinaryFormatter formatter = new();
         private Stream? stream;
-        private BinaryFormatter formatter = new();
         private Sport Sport { get; set; }
-        private string fileName;
+        private string fileName = "WybraneDruzynySiatkowka.bin";
         public OpcjeKwalifikacjeDalej(string sport)
         {
             InitializeComponent();
+            Sport = new Siatkowka();
 
-            if(sport == "DwaOgnie")
+            if (sport == "DwaOgnie")
             {
                 Sport = new DwaOgnie();
                 fileName = "WybraneDruzynyDwaOgnie.bin";
@@ -41,11 +42,6 @@ namespace Kopakabana
                 Sport = new PrzeciaganieLiny();
                 fileName = "WybraneDruzynyPrzeciaganieLiny.bin";
             }
-            else
-            {
-                Sport = new Siatkowka();
-                fileName = "WybraneDruzynySiatkowka.bin";
-            }
 
             if (File.Exists(fileName))
             {
@@ -53,21 +49,15 @@ namespace Kopakabana
                 wybraneDruzyny = (ListaDruzyn)formatter.Deserialize(stream);
                 stream.Close();
             }
-            else
-            {
-                wybraneDruzyny = new();
-            }
 
             wybraneDruzyny.GetListaDruzyn().ForEach(druzyna => Druzyny.Items.Add(druzyna));
         }
 
         private void DodajDruzyny_Click(object sender, RoutedEventArgs e)
         {
-            DodajDruzynyDoKwalifikacji dodajDruzynyDoKwalifikacji = new();
+            DodajDruzynyDoKwalifikacji dodajDruzynyDoKwalifikacji = new(wybraneDruzyny);
             
-            wybraneDruzyny.GetListaDruzyn().ForEach(druzyna => dodajDruzynyDoKwalifikacji.MoveToWybraneDruzyny(druzyna));
-            
-            if (true == dodajDruzynyDoKwalifikacji.ShowDialog())
+            if (dodajDruzynyDoKwalifikacji.ShowDialog() == true)
             {
                 Druzyny.Items.Clear();
                 wybraneDruzyny.Clear();
@@ -87,11 +77,9 @@ namespace Kopakabana
                 MessageBox.Show("Kwalifikacje muszą mieć więcej niż 5 drużyn.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
-            if (true == opcjeKwalifikacjeGeneruj.ShowDialog())
-            {
 
-            }
+            OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
+            opcjeKwalifikacjeGeneruj.ShowDialog();
         }
         public void ZapisDoPliku()
         {
