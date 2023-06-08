@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Kopakabana;
+using Kopakabana_interfejs.Interfejs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Kopakabana
+namespace Kopakabana_interfejs
 {
     /// <summary>
-    /// Logika interakcji dla klasy OpcjeKwalifikacjeGeneruj.xaml
+    /// Logika interakcji dla klasy OpcjeKwalifikacjiGenerujSiatkowka.xaml
     /// </summary>
-    public partial class OpcjeKwalifikacjeGeneruj : Window
+    public partial class OpcjeKwalifikacjiGenerujSiatkowka : Window
     {
         private Kwalifikacje kwalifikacje;
         private Stream? stream;
@@ -28,22 +29,11 @@ namespace Kopakabana
         private Sport Sport { get; set; }
         private string fileName = "KwalifikacjeSiatkowka.bin";
         private ListaDruzyn ListaDruzyn { get; set; }
-        public OpcjeKwalifikacjeGeneruj(Sport sport, ListaDruzyn listaDruzyn)
+        public OpcjeKwalifikacjiGenerujSiatkowka(Sport sport, ListaDruzyn listaDruzyn)
         {
             InitializeComponent();
             Sport = sport;
             ListaDruzyn = listaDruzyn;
-            SportKontrolka.Text = Sport.ToString();
-
-            if (Sport is DwaOgnie)
-            {
-                fileName = "KwalifikacjeDwaOgnie.bin";
-            }
-            else if(Sport is PrzeciaganieLiny)
-            {
-                fileName = "KwalifikacjePrzeciaganieLiny.bin";
-            }
-
             if (File.Exists(fileName))
             {
                 stream = File.Open(fileName, FileMode.Open);
@@ -54,34 +44,35 @@ namespace Kopakabana
             {
                 kwalifikacje = new(Sport, listaDruzyn);
             }
-
             PrintListBoxes();
             ZapisDoPliku();
         }
 
-        private void WybierzSedziego_Click(object sender, RoutedEventArgs e)
+        public void ZapisDoPliku()
         {
-            if (Rozgrywki.SelectedItem is not Rozgrywka rozgrywka) return;
-
-            WybierzSedziego wybierzSedziego = new(rozgrywka, Sport);
-
-            if(wybierzSedziego.ShowDialog() == true )
-            {
-                rozgrywka.Sedzia = wybierzSedziego.SedziowieKontrolka.SelectedItem as Sedzia;
-                Rozgrywki.Items.Refresh();
-                ZapisDoPliku();
-            }
+            stream = File.Open(fileName, FileMode.Create);
+            formatter.Serialize(stream, kwalifikacje);
+            stream.Close();
         }
-        private void Rozegraj_Click(object sender, EventArgs e)
+
+        private void PrintListBoxes()
         {
-            if (Rozgrywki.SelectedItem is not Rozgrywka rozgrywka) return;
+            RozgrywkaSiatkowka.Items.Clear();
+            Tabela.Items.Clear();
+            kwalifikacje.GetListaRozgrywek().ForEach(rozgrywka => RozgrywkaSiatkowka.Items.Add(rozgrywka));
+            kwalifikacje.GetTabela().ForEach(wiersz => Tabela.Items.Add(wiersz));
+        }
+
+        private void Rozegraj_Click(object sender, RoutedEventArgs e)
+        {
+            if (RozgrywkaSiatkowka.SelectedItem is not Rozgrywka rozgrywka) return;
 
             if (rozgrywka.Sedzia is null)
             {
-                MessageBox.Show("Wybierz sędziego!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wybierz sędziow!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+                
             }
-
             OpcjeRozegraj opcjeRozegraj = new(rozgrywka);
 
             if (opcjeRozegraj.ShowDialog() == true)
@@ -95,15 +86,29 @@ namespace Kopakabana
                 MessageBox.Show($"Rozgrywka została rozegrana!\nWygrana Drużyna: {rozgrywka.WygranaDruzyna}", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
                 kwalifikacje.Tabela.DodajPunkt(rozgrywka.WygranaDruzyna);
                 kwalifikacje.Tabela.Sortuj();
-                
+
                 PrintListBoxes();
                 ZapisDoPliku();
-                
+
             }
         }
+
+        private void Polfinaly_Click(object sender, RoutedEventArgs e)
+        {
+            if (kwalifikacje.CzyRozegrane())
+            {
+                Polfinaly polfinaly = new(kwalifikacje.ZnajdzNajlepsze4(), Sport);
+                polfinaly.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Najpierw rozegraj wszystkie kwalifikacje!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Czy chcesz zresetować kwalifikacje?", "box", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Czy chcesz zresetować kwalifikacje?", "box", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 kwalifikacje = new(Sport, ListaDruzyn);
                 PrintListBoxes();
@@ -112,31 +117,23 @@ namespace Kopakabana
                 ZapisDoPliku();
             }
         }
-        private void Polfinaly_Click(object sender, RoutedEventArgs e)
-        {
-            if (kwalifikacje.CzyRozegrane())
-            {
-                Polfinaly polfinaly = new(kwalifikacje.ZnajdzNajlepsze4(), Sport);
-                polfinaly.ShowDialog();
-            } 
-            else
-            {
-                MessageBox.Show("Najpierw rozegraj wszystkie kwalifikacje!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        public void ZapisDoPliku()
-        {
-            stream = File.Open(fileName, FileMode.Create);
-            formatter.Serialize(stream, kwalifikacje);
-            stream.Close();
-        }
 
-        private void PrintListBoxes()
+        private void Wybierz_sedziego_glownego_Click(object sender, RoutedEventArgs e)
         {
-            Rozgrywki.Items.Clear();
-            Tabela.Items.Clear();
-            kwalifikacje.GetListaRozgrywek().ForEach(rozgrywka => Rozgrywki.Items.Add(rozgrywka));
-            kwalifikacje.GetTabela().ForEach(wiersz => Tabela.Items.Add(wiersz));
+            if (RozgrywkaSiatkowka.SelectedItem is not RozgrywkaSiatkowka rozgrywka) return;
+
+            DodanieSedziowSiatkowki sedziowieSiatkowki = new(rozgrywka, Sport);
+            
+            if (sedziowieSiatkowki.ShowDialog() == true)
+            {
+                rozgrywka.Sedzia = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaGlowna.SelectedItem;
+                rozgrywka.sedzia1 = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaPom1.SelectedItem;
+                rozgrywka.sedzia2 = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaPom2.SelectedItem;
+
+                RozgrywkaSiatkowka.Items.Refresh();
+                ZapisDoPliku();
+            }
+         
         }
 
         

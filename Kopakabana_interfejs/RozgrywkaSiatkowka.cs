@@ -3,7 +3,7 @@ using System;
 namespace Kopakabana
 {
     [Serializable()]
-    class RozgrywkaSiatkowka : Rozgrywka
+    public class RozgrywkaSiatkowka : Rozgrywka
     {
         public Sedzia? sedzia1 { get; set; }
         public Sedzia? sedzia2 { get; set; }
@@ -14,6 +14,18 @@ namespace Kopakabana
         {
             this.sedzia1 = sedzia1;
             this.sedzia2 = sedzia2;
+        }
+        public override string ToString()
+        {
+            if (Sedzia == null || sedzia1 == null || sedzia2 == null )
+            {
+                return $"{druzyna1} vs {druzyna2}";
+            }
+            else 
+            {
+                return $"{druzyna1} vs {druzyna2}\nSedzia glowny: {Sedzia.Name} {Sedzia.Surname}" +
+                    $"\nSedzia pomocniczy (1): {sedzia1.Name} {sedzia2.Surname}\nSedzia pomocniczy(2) {sedzia2.Name} {sedzia2.Surname}";
+            }
         }
 
     }

@@ -46,6 +46,27 @@ namespace Kopakabana
                 SedziowieKontrolka.Items.Add(sedzia);
             }
         }
+        public WybierzSedziego(RozgrywkaSiatkowka rozgrywkaSiatkowka, Sport sport)
+        {
+            InitializeComponent();
+            Rozgrywka.Text = rozgrywkaSiatkowka.ToString();
+            WygranaDruzynaKontrolka.Text = rozgrywkaSiatkowka.WygranaDruzyna?.ToString();
+            if (File.Exists("Sedziowie.bin"))
+            {
+                stream = File.Open("Sedziowie.bin", FileMode.Open);
+                kantorek = (Kantorek)formatter.Deserialize(stream);
+                stream.Close();
+            }
+            else
+            {
+                kantorek = new();
+            }
+
+            foreach (Sedzia sedzia in kantorek.GetKantorekSportu(sport).GetSedziowie())
+            {
+                SedziowieKontrolka.Items.Add(sedzia);
+            }
+        }
 
         private void OnOk_Click(object sender, RoutedEventArgs e)
         {
