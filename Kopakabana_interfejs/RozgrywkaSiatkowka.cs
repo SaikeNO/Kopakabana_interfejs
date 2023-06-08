@@ -24,7 +24,7 @@ namespace Kopakabana
             else 
             {
                 return $"{druzyna1} vs {druzyna2}\nSedzia glowny: {Sedzia.Name} {Sedzia.Surname}" +
-                    $"\nSedzia pomocniczy (1): {sedzia1.Name} {sedzia2.Surname}\nSedzia pomocniczy(2) {sedzia2.Name} {sedzia2.Surname}";
+                    $"\nSedzia pomocniczy (1): {sedzia1.Name} {sedzia2.Surname}\nSedzia pomocniczy (2) {sedzia2.Name} {sedzia2.Surname}";
             }
         }
 

@@ -86,8 +86,6 @@ namespace Kopakabana_interfejs.Interfejs
             }
         }
 
-        
-
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

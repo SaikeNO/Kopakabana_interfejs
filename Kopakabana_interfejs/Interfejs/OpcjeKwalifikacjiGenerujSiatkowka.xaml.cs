@@ -97,7 +97,7 @@ namespace Kopakabana_interfejs
         {
             if (kwalifikacje.CzyRozegrane())
             {
-                Polfinaly polfinaly = new(kwalifikacje.ZnajdzNajlepsze4(), Sport);
+                PolfinalySiatkowka polfinaly = new(kwalifikacje.ZnajdzNajlepsze4(), Sport);
                 polfinaly.ShowDialog();
             }
             else
