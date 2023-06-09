@@ -9,7 +9,7 @@
     <Grid>
         <ListBox x:Name="SedziowieKontrolkaGlowna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,22,370,301" />
         <Label Content="Sedzia Glowny:" HorizontalAlignment="Left" Margin="446,22,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock x:Name="WybranyGlowny" HorizontalAlignment="Left" Margin="580,27,0,0" TextWrapping="Wrap" Text="Sedzia" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.133,-0.048" Width="206"/>
+        <TextBlock x:Name="WybranyGlowny" HorizontalAlignment="Left" Margin="448,54,0,0" TextWrapping="Wrap" Text="Sedzia" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.133,-0.048" Width="206"/>
         <Button Content="Wybierz" HorizontalAlignment="Left" Margin="85,24,0,0" VerticalAlignment="Top" Height="32" Width="77" FontSize="18" Click="WybierzGlownego_Click"/>
         <ListBox x:Name="SedziowieKontrolkaPom1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,150,370,173" />
         <ListBox x:Name="SedziowieKontrolkaPom2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,284,370,39" />

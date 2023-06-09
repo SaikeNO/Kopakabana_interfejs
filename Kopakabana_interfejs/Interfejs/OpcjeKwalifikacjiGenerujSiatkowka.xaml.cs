@@ -29,6 +29,7 @@ namespace Kopakabana_interfejs
         private Sport Sport { get; set; }
         private string fileName = "KwalifikacjeSiatkowka.bin";
         private ListaDruzyn ListaDruzyn { get; set; }
+        
         public OpcjeKwalifikacjiGenerujSiatkowka(Sport sport, ListaDruzyn listaDruzyn)
         {
             InitializeComponent();
@@ -65,9 +66,9 @@ namespace Kopakabana_interfejs
 
         private void Rozegraj_Click(object sender, RoutedEventArgs e)
         {
-            if (RozgrywkaSiatkowka.SelectedItem is not Rozgrywka rozgrywka) return;
+            if (RozgrywkaSiatkowka.SelectedItem is not RozgrywkaSiatkowka rozgrywka) return;
 
-            if (rozgrywka.Sedzia is null)
+            if (rozgrywka.Sedzia is null || rozgrywka.sedzia1 is null || rozgrywka.sedzia2 is null)
             {
                 MessageBox.Show("Wybierz sędziow!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -129,6 +130,7 @@ namespace Kopakabana_interfejs
                 rozgrywka.Sedzia = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaGlowna.SelectedItem;
                 rozgrywka.sedzia1 = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaPom1.SelectedItem;
                 rozgrywka.sedzia2 = (Sedzia)sedziowieSiatkowki.SedziowieKontrolkaPom2.SelectedItem;
+                
 
                 RozgrywkaSiatkowka.Items.Refresh();
                 ZapisDoPliku();
