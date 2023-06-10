@@ -135,8 +135,14 @@ namespace Kopakabana
             else
             {
                 Rozgrywka final = new(wygraneDruzyny[0], wygraneDruzyny[1]);
-                OpcjeRozegraj opcjeFinal = new(final);
+                WybierzSedziego wybierzSedziego = new(final, Sport);
 
+                if (wybierzSedziego.ShowDialog() == true)
+                {
+                    final.Sedzia = wybierzSedziego.SedziowieKontrolka.SelectedItem as Sedzia;
+                   
+                }
+                OpcjeRozegraj opcjeFinal = new(final);
                 if (opcjeFinal.ShowDialog() == true)
                 {
                     final.WygranaDruzyna = opcjeFinal.Druzyna1Kontrolka.Content as Druzyna;
