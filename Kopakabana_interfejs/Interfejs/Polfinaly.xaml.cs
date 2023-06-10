@@ -136,6 +136,7 @@ namespace Kopakabana
             {
                 Rozgrywka final = new(wygraneDruzyny[0], wygraneDruzyny[1]);
                 OpcjeRozegraj opcjeFinal = new(final);
+
                 if (opcjeFinal.ShowDialog() == true)
                 {
                     final.WygranaDruzyna = opcjeFinal.Druzyna1Kontrolka.Content as Druzyna;

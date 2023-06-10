@@ -135,7 +135,15 @@ namespace Kopakabana_interfejs.Interfejs
             }
             else
             {
-                Rozgrywka final = new(wygraneDruzyny[0], wygraneDruzyny[1]);
+                RozgrywkaSiatkowka final = new(wygraneDruzyny[0], wygraneDruzyny[1]);
+                DodanieSedziowSiatkowki dodanieSedziow = new(final, Sport);
+                
+                if(dodanieSedziow.ShowDialog() == true)
+                {
+                    final.Sedzia = (Sedzia)dodanieSedziow.SedziowieKontrolkaGlowna.SelectedItem;
+                    final.sedzia1 = (Sedzia)dodanieSedziow.SedziowieKontrolkaPom1.SelectedItem;
+                    final.sedzia2 = (Sedzia)dodanieSedziow.SedziowieKontrolkaPom2.SelectedItem;
+                }
                 OpcjeRozegraj opcjeFinal = new(final);
                 if (opcjeFinal.ShowDialog() == true)
                 {
@@ -150,6 +158,7 @@ namespace Kopakabana_interfejs.Interfejs
                     stream.Close();
                     MessageBox.Show($"Finał został rozegrany!\nZwycięska Drużyna: {final.WygranaDruzyna}", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+
             }
         }
         public void ZapisDoPliku()
@@ -161,7 +170,21 @@ namespace Kopakabana_interfejs.Interfejs
 
         
     }
-    
 
+    //Rozgrywka final = new(wygraneDruzyny[0], wygraneDruzyny[1]);
+    //OpcjeRozegraj opcjeFinal = new(final);
+    //if (opcjeFinal.ShowDialog() == true)
+    //{
+    //    final.WygranaDruzyna = opcjeFinal.Druzyna1Kontrolka.Content as Druzyna;
+    //    if (opcjeFinal.Druzyna2Kontrolka.IsChecked == true)
+    //    {
+    //        final.WygranaDruzyna = opcjeFinal.Druzyna2Kontrolka.Content as Druzyna;
+    //    }
+    //    ZwycieskaDruzyna = final.WygranaDruzyna;
+    //    stream = File.Open("WygranaDruzyna.bin", FileMode.Create);
+    //    formatter.Serialize(stream, ZwycieskaDruzyna);
+    //    stream.Close();
+    //    MessageBox.Show($"Finał został rozegrany!\nZwycięska Drużyna: {final.WygranaDruzyna}", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+    //}
 
 }
