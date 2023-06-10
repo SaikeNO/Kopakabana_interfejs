@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kopakabana_interfejs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -77,9 +78,17 @@ namespace Kopakabana
                 MessageBox.Show("Kwalifikacje muszą mieć więcej niż 5 drużyn.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
-            OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
-            opcjeKwalifikacjeGeneruj.ShowDialog();
+            if(Sport is Siatkowka)
+            {
+                OpcjeKwalifikacjiGenerujSiatkowka opcjeKwalifikacjiGenerujSiatkowka = new(Sport, wybraneDruzyny);
+                opcjeKwalifikacjiGenerujSiatkowka.ShowDialog();
+            }
+            else
+            {
+                OpcjeKwalifikacjeGeneruj opcjeKwalifikacjeGeneruj = new(Sport, wybraneDruzyny);
+                opcjeKwalifikacjeGeneruj.ShowDialog();
+            }
+            
         }
         public void ZapisDoPliku()
         {

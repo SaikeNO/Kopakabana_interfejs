@@ -138,5 +138,7 @@ namespace Kopakabana
             kwalifikacje.GetListaRozgrywek().ForEach(rozgrywka => Rozgrywki.Items.Add(rozgrywka));
             kwalifikacje.GetTabela().ForEach(wiersz => Tabela.Items.Add(wiersz));
         }
+
+        
     }
 }

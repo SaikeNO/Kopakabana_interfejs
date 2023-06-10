@@ -46,6 +46,7 @@ namespace Kopakabana
                 SedziowieKontrolka.Items.Add(sedzia);
             }
         }
+        
 
         private void OnOk_Click(object sender, RoutedEventArgs e)
         {

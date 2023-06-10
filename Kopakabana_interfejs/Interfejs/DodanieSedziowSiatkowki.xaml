@@ -1,0 +1,25 @@
+﻿<Window x:Class="Kopakabana_interfejs.Interfejs.DodanieSedziowSiatkowki"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kopakabana_interfejs.Interfejs"
+        mc:Ignorable="d"
+        Title="DodanieSedziowSiatkowki" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="SedziowieKontrolkaGlowna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,22,370,301" />
+        <Label Content="Sedzia Glowny:" HorizontalAlignment="Left" Margin="446,22,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="WybranyGlowny" HorizontalAlignment="Left" Margin="448,54,0,0" TextWrapping="Wrap" Text="Sedzia" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.133,-0.048" Width="206"/>
+        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="85,24,0,0" VerticalAlignment="Top" Height="32" Width="77" FontSize="18" Click="WybierzGlownego_Click"/>
+        <ListBox x:Name="SedziowieKontrolkaPom1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,150,370,173" />
+        <ListBox x:Name="SedziowieKontrolkaPom2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="235,284,370,39" />
+        <Label Content="Sedzia Pomocniczy (1):" HorizontalAlignment="Left" Margin="446,150,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="WybranyPom1" HorizontalAlignment="Left" Margin="448,189,0,0" TextWrapping="Wrap" Text="Sedzia" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.133,-0.048" Width="206"/>
+        <Label Content="Sedzia Pomocniczy (2):" HorizontalAlignment="Left" Margin="446,284,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="WybranyPom2" HorizontalAlignment="Left" Margin="448,328,0,0" TextWrapping="Wrap" Text="Sedzia" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.133,-0.048" Width="206"/>
+        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="85,152,0,0" VerticalAlignment="Top" Height="32" Width="77" FontSize="18" Click="WybierzPom1_Click"/>
+        <Button Content="Wybierz" HorizontalAlignment="Left" Margin="85,286,0,0" VerticalAlignment="Top" Height="32" Width="77" FontSize="18" Click="WybierzPom2_Click"/>
+        <Button Content="Zatwierdz" HorizontalAlignment="Left" Margin="613,374,0,0" VerticalAlignment="Top" FontSize="18" Click="Zatwierdz_Click"/>
+
+    </Grid>
+</Window>

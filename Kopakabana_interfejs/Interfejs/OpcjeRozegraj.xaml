@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kopakabana"
         mc:Ignorable="d"
-        Title="OpcjeRozegraj" Height="320" Width="700">
+        Title="OpcjeRozegraj" Height="348" Width="700">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
         <TextBlock Text="Rozgrywka:" HorizontalAlignment="Left" Margin="33,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22"/>
-        <TextBlock x:Name="RozgrywkaKontrolka" HorizontalAlignment="Left" Margin="147,21,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22"/>
-        <RadioButton GroupName="druzyna" Content="t" x:Name="Druzyna1Kontrolka" IsChecked="True" HorizontalAlignment="Left" Margin="45,136,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="33,88,0,0" TextWrapping="Wrap" Text="Wybierz wygraną drużynę:" VerticalAlignment="Top" FontSize="22"/>
-        <RadioButton GroupName="druzyna" Content="t" x:Name="Druzyna2Kontrolka" HorizontalAlignment="Left" Margin="45,156,0,0" VerticalAlignment="Top"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="33,188,0,0" VerticalAlignment="Top" FontSize="22" Click="OnOk_Click" Padding="20 5"/>
-        <Button Content="Anuluj" IsCancel="True" HorizontalAlignment="Left" Margin="184,188,0,0" VerticalAlignment="Top" FontSize="22" Padding="20 5"/>
-        <TextBlock HorizontalAlignment="Left" Margin="33,246,0,0" TextWrapping="Wrap" Text="Wygrana Drużyna:" VerticalAlignment="Top" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" x:Name="WygranaDruzynaKontrolka" Margin="215,246,0,0" TextWrapping="Wrap" Text="s" VerticalAlignment="Top" FontSize="22"/>
+        <TextBlock x:Name="RozgrywkaKontrolka" HorizontalAlignment="Left" Margin="147,21,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="22" Grid.ColumnSpan="2"/>
+        <RadioButton GroupName="druzyna" Content="t" x:Name="Druzyna1Kontrolka" IsChecked="True" HorizontalAlignment="Left" Margin="45,176,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.774,-2.062"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,142,0,0" TextWrapping="Wrap" Text="Wybierz wygraną drużynę:" VerticalAlignment="Top" FontSize="22" Grid.ColumnSpan="2"/>
+        <RadioButton GroupName="druzyna" Content="t" x:Name="Druzyna2Kontrolka" HorizontalAlignment="Left" Margin="45,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.68,-2.962"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="33,221,0,0" VerticalAlignment="Top" FontSize="22" Click="OnOk_Click" Padding="20 5"/>
+        <Button Content="Anuluj" IsCancel="True" HorizontalAlignment="Left" Margin="184,221,0,0" VerticalAlignment="Top" FontSize="22" Padding="20 5" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,267,0,0" TextWrapping="Wrap" Text="Wygrana Drużyna:" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.494,2.188" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" x:Name="WygranaDruzynaKontrolka" Margin="30,267,0,0" TextWrapping="Wrap" Text="s" VerticalAlignment="Top" FontSize="22" Grid.Column="1"/>
 
     </Grid>
 </Window>

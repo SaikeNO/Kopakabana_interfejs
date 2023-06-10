@@ -1,0 +1,28 @@
+﻿<Window x:Class="Kopakabana_interfejs.OpcjeKwalifikacjiGenerujSiatkowka"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kopakabana_interfejs"
+        mc:Ignorable="d"
+        Title="OpcjeKwalifikacjiGenerujSiatkowka" Height="355" Width="1041">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Siatkowka" VerticalAlignment="Top" FontSize="24"/>
+        <ListBox x:Name="RozgrywkaSiatkowka" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="302,60,395,88" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.157"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.397"/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
+        <ListBox x:Name="Tabela" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="676,60,41,88" />
+        <Button Content="Wybierz Sedziow" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="18" Width="256" Click="Wybierz_sedziego_glownego_Click"/>
+        <Button x:Name="Rozegraj" Content="Rozegraj" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" FontSize="18" Click="Rozegraj_Click" Padding="10 0" Width="256" Height="30"/>
+        <Button Content="Półfinały" HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top" FontSize="18" Padding="20 0" Width="256" Click="Polfinaly_Click"/>
+        <Button x:Name="Reset" Content="Resetuj" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Click="Reset_Click" Padding="10 0" Width="256" Margin="10,164,0,0"/>
+
+    </Grid>
+</Window>
